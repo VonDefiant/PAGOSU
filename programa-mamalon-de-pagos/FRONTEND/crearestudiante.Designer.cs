@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crearestudiante));
             nombreestuadiante = new TextBox();
             pictureBox1 = new PictureBox();
             telefonoalumno = new TextBox();
             EMAILESTUDIANTE = new TextBox();
-            FACULTAD = new ListBox();
-            INSTITUCION = new ListBox();
             SECCIONESTUDIANTE = new TextBox();
-            CARRERA = new ListBox();
             textBox3 = new TextBox();
             NACIMIENTOESTUDIANTE = new TextBox();
             SAVEBUTTON = new Button();
+            Cbcarrera = new ComboBox();
+            CbFacultad = new ComboBox();
+            Cbinstitucion = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // nombreestuadiante
             // 
             nombreestuadiante.ForeColor = SystemColors.InfoText;
-            nombreestuadiante.Location = new Point(154, 31);
-            nombreestuadiante.Margin = new Padding(3, 2, 3, 2);
+            nombreestuadiante.Location = new Point(176, 41);
             nombreestuadiante.Name = "nombreestuadiante";
-            nombreestuadiante.Size = new Size(409, 23);
+            nombreestuadiante.Size = new Size(467, 27);
             nombreestuadiante.TabIndex = 0;
             nombreestuadiante.Text = "INGRESE EL NOMBRE COMPLETO";
             nombreestuadiante.TextAlign = HorizontalAlignment.Center;
@@ -58,20 +58,18 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.alumno;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(21, 31);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(24, 41);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(118, 122);
+            pictureBox1.Size = new Size(135, 163);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
             // telefonoalumno
             // 
             telefonoalumno.ForeColor = SystemColors.InfoText;
-            telefonoalumno.Location = new Point(156, 108);
-            telefonoalumno.Margin = new Padding(3, 2, 3, 2);
+            telefonoalumno.Location = new Point(178, 144);
             telefonoalumno.Name = "telefonoalumno";
-            telefonoalumno.Size = new Size(110, 23);
+            telefonoalumno.Size = new Size(125, 27);
             telefonoalumno.TabIndex = 2;
             telefonoalumno.Text = "TELEFONO";
             telefonoalumno.TextAlign = HorizontalAlignment.Center;
@@ -80,70 +78,31 @@
             // EMAILESTUDIANTE
             // 
             EMAILESTUDIANTE.ForeColor = SystemColors.InfoText;
-            EMAILESTUDIANTE.Location = new Point(154, 56);
-            EMAILESTUDIANTE.Margin = new Padding(3, 2, 3, 2);
+            EMAILESTUDIANTE.Location = new Point(176, 75);
             EMAILESTUDIANTE.Name = "EMAILESTUDIANTE";
-            EMAILESTUDIANTE.Size = new Size(409, 23);
+            EMAILESTUDIANTE.Size = new Size(467, 27);
             EMAILESTUDIANTE.TabIndex = 3;
             EMAILESTUDIANTE.Text = "CORREO ELECTRONICO";
             EMAILESTUDIANTE.TextAlign = HorizontalAlignment.Center;
             EMAILESTUDIANTE.TextChanged += EMAILESTUDIANTE_TextChanged;
             // 
-            // FACULTAD
-            // 
-            FACULTAD.ForeColor = SystemColors.InfoText;
-            FACULTAD.FormattingEnabled = true;
-            FACULTAD.ItemHeight = 15;
-            FACULTAD.Location = new Point(270, 110);
-            FACULTAD.Margin = new Padding(3, 2, 3, 2);
-            FACULTAD.Name = "FACULTAD";
-            FACULTAD.Size = new Size(180, 19);
-            FACULTAD.TabIndex = 4;
-            FACULTAD.SelectedIndexChanged += FACULTAD_SelectedIndexChanged;
-            // 
-            // INSTITUCION
-            // 
-            INSTITUCION.ForeColor = SystemColors.InfoText;
-            INSTITUCION.FormattingEnabled = true;
-            INSTITUCION.ItemHeight = 15;
-            INSTITUCION.Location = new Point(156, 80);
-            INSTITUCION.Margin = new Padding(3, 2, 3, 2);
-            INSTITUCION.Name = "INSTITUCION";
-            INSTITUCION.Size = new Size(407, 19);
-            INSTITUCION.TabIndex = 5;
-            INSTITUCION.SelectedIndexChanged += INSTITUCION_SelectedIndexChanged;
-            // 
             // SECCIONESTUDIANTE
             // 
             SECCIONESTUDIANTE.ForeColor = SystemColors.InfoText;
-            SECCIONESTUDIANTE.Location = new Point(156, 133);
-            SECCIONESTUDIANTE.Margin = new Padding(3, 2, 3, 2);
+            SECCIONESTUDIANTE.Location = new Point(178, 177);
             SECCIONESTUDIANTE.Name = "SECCIONESTUDIANTE";
-            SECCIONESTUDIANTE.Size = new Size(71, 23);
+            SECCIONESTUDIANTE.Size = new Size(81, 27);
             SECCIONESTUDIANTE.TabIndex = 6;
             SECCIONESTUDIANTE.Text = "SECCION";
             SECCIONESTUDIANTE.TextAlign = HorizontalAlignment.Center;
             SECCIONESTUDIANTE.TextChanged += SECCIONESTUDIANTE_TextChanged;
             // 
-            // CARRERA
-            // 
-            CARRERA.ForeColor = SystemColors.InfoText;
-            CARRERA.FormattingEnabled = true;
-            CARRERA.ItemHeight = 15;
-            CARRERA.Location = new Point(232, 135);
-            CARRERA.Margin = new Padding(3, 2, 3, 2);
-            CARRERA.Name = "CARRERA";
-            CARRERA.Size = new Size(220, 19);
-            CARRERA.TabIndex = 7;
-            CARRERA.SelectedIndexChanged += CARRERA_SelectedIndexChanged;
-            // 
             // textBox3
             // 
             textBox3.ForeColor = SystemColors.InfoText;
-            textBox3.Location = new Point(455, 133);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.Location = new Point(520, 177);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(110, 23);
+            textBox3.Size = new Size(125, 27);
             textBox3.TabIndex = 8;
             textBox3.Text = "JORNADA";
             textBox3.TextAlign = HorizontalAlignment.Center;
@@ -152,10 +111,9 @@
             // NACIMIENTOESTUDIANTE
             // 
             NACIMIENTOESTUDIANTE.ForeColor = SystemColors.InfoText;
-            NACIMIENTOESTUDIANTE.Location = new Point(455, 110);
-            NACIMIENTOESTUDIANTE.Margin = new Padding(3, 2, 3, 2);
+            NACIMIENTOESTUDIANTE.Location = new Point(520, 147);
             NACIMIENTOESTUDIANTE.Name = "NACIMIENTOESTUDIANTE";
-            NACIMIENTOESTUDIANTE.Size = new Size(108, 23);
+            NACIMIENTOESTUDIANTE.Size = new Size(123, 27);
             NACIMIENTOESTUDIANTE.TabIndex = 9;
             NACIMIENTOESTUDIANTE.Text = "NACIMIENTO";
             NACIMIENTOESTUDIANTE.TextAlign = HorizontalAlignment.Center;
@@ -166,32 +124,60 @@
             SAVEBUTTON.BackgroundImage = Properties.Resources.salvar;
             SAVEBUTTON.BackgroundImageLayout = ImageLayout.Zoom;
             SAVEBUTTON.ForeColor = SystemColors.ButtonHighlight;
-            SAVEBUTTON.Location = new Point(301, 158);
-            SAVEBUTTON.Margin = new Padding(3, 2, 3, 2);
+            SAVEBUTTON.Location = new Point(344, 211);
             SAVEBUTTON.Name = "SAVEBUTTON";
-            SAVEBUTTON.Size = new Size(70, 57);
+            SAVEBUTTON.Size = new Size(80, 76);
             SAVEBUTTON.TabIndex = 10;
             SAVEBUTTON.UseVisualStyleBackColor = true;
             SAVEBUTTON.Click += SAVEBUTTON_Click;
             // 
+            // Cbcarrera
+            // 
+            Cbcarrera.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Cbcarrera.FormattingEnabled = true;
+            Cbcarrera.Location = new Point(265, 176);
+            Cbcarrera.Name = "Cbcarrera";
+            Cbcarrera.Size = new Size(249, 28);
+            Cbcarrera.TabIndex = 11;
+            Cbcarrera.Text = "CARRERA";
+            // 
+            // CbFacultad
+            // 
+            CbFacultad.FormattingEnabled = true;
+            CbFacultad.Location = new Point(309, 143);
+            CbFacultad.Name = "CbFacultad";
+            CbFacultad.Size = new Size(205, 28);
+            CbFacultad.TabIndex = 12;
+            CbFacultad.Text = "FACULTAD";
+            CbFacultad.SelectedIndexChanged += CbFacultad_SelectedIndexChanged;
+            // 
+            // Cbinstitucion
+            // 
+            Cbinstitucion.FormattingEnabled = true;
+            Cbinstitucion.Location = new Point(178, 108);
+            Cbinstitucion.Name = "Cbinstitucion";
+            Cbinstitucion.Size = new Size(467, 28);
+            Cbinstitucion.TabIndex = 13;
+            Cbinstitucion.Text = "INTITUCION";
+            // 
             // crearestudiante
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(592, 226);
+            ClientSize = new Size(677, 301);
+            Controls.Add(Cbinstitucion);
+            Controls.Add(CbFacultad);
+            Controls.Add(Cbcarrera);
             Controls.Add(SAVEBUTTON);
             Controls.Add(NACIMIENTOESTUDIANTE);
             Controls.Add(textBox3);
-            Controls.Add(CARRERA);
             Controls.Add(SECCIONESTUDIANTE);
-            Controls.Add(INSTITUCION);
-            Controls.Add(FACULTAD);
             Controls.Add(EMAILESTUDIANTE);
             Controls.Add(telefonoalumno);
             Controls.Add(pictureBox1);
             Controls.Add(nombreestuadiante);
-            Margin = new Padding(3, 2, 3, 2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "crearestudiante";
             Text = "crearestudiante";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -205,12 +191,12 @@
         private PictureBox pictureBox1;
         private TextBox telefonoalumno;
         private TextBox EMAILESTUDIANTE;
-        private ListBox FACULTAD;
-        private ListBox INSTITUCION;
         private TextBox SECCIONESTUDIANTE;
-        private ListBox CARRERA;
         private TextBox textBox3;
         private TextBox NACIMIENTOESTUDIANTE;
         private Button SAVEBUTTON;
+        private ComboBox Cbcarrera;
+        private ComboBox CbFacultad;
+        private ComboBox Cbinstitucion;
     }
 }

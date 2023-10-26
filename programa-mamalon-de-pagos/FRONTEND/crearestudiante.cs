@@ -124,5 +124,10 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
 
         }
+
+        private void CbFacultad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
