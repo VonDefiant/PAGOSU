@@ -67,6 +67,7 @@
             insititutonbtm.TextAlign = ContentAlignment.BottomCenter;
             insititutonbtm.TextImageRelation = TextImageRelation.ImageAboveText;
             insititutonbtm.UseVisualStyleBackColor = true;
+            insititutonbtm.Click += insititutonbtm_Click;
             // 
             // button2
             // 
@@ -124,6 +125,7 @@
             PERIODOBT.Size = new Size(144, 108);
             PERIODOBT.TabIndex = 19;
             PERIODOBT.UseVisualStyleBackColor = true;
+            PERIODOBT.Click += PERIODOBT_Click;
             // 
             // SECCIONESBT
             // 
@@ -138,6 +140,7 @@
             SECCIONESBT.TabIndex = 17;
             SECCIONESBT.TextAlign = ContentAlignment.BottomCenter;
             SECCIONESBT.UseVisualStyleBackColor = true;
+            SECCIONESBT.Click += SECCIONESBT_Click;
             // 
             // CURSOSBT
             // 
@@ -155,6 +158,7 @@
             CURSOSBT.TextAlign = ContentAlignment.BottomCenter;
             CURSOSBT.TextImageRelation = TextImageRelation.ImageAboveText;
             CURSOSBT.UseVisualStyleBackColor = true;
+            CURSOSBT.Click += CURSOSBT_Click;
             // 
             // CONSULTASBT
             // 
@@ -178,6 +182,7 @@
             REPORTESBT.Size = new Size(144, 108);
             REPORTESBT.TabIndex = 22;
             REPORTESBT.UseVisualStyleBackColor = true;
+            REPORTESBT.Click += REPORTESBT_Click;
             // 
             // PAGOSBT
             // 
@@ -195,6 +200,7 @@
             PAGOSBT.TextAlign = ContentAlignment.BottomCenter;
             PAGOSBT.TextImageRelation = TextImageRelation.ImageAboveText;
             PAGOSBT.UseVisualStyleBackColor = true;
+            PAGOSBT.Click += PAGOSBT_Click;
             // 
             // label1
             // 

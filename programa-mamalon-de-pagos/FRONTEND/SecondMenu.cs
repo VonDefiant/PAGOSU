@@ -13,6 +13,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
 {
     public partial class SecondMenu : Form
     {
+        private Form formularioAbierto = null;
+
         public enum ContextoMenu
         {
             Institucion,
@@ -34,6 +36,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
             InitializeComponent();
             this.contexto = contexto;
+            this.FormClosed += SecondMenu_FormClosed; // Suscribir al evento FormClosed
 
             // Cambiar el texto del LabelTitulo según el contexto
             switch (contexto)
@@ -77,22 +80,22 @@ namespace programa_mamalon_de_pagos.FRONTEND
         private void ButtonAgregar_Click(object sender, EventArgs e)
         {
             // Botón "Agregar": Redirigir a otro formulario según el contexto
-            /*switch (contexto)
+            switch (contexto)
             {
                 case ContextoMenu.Institucion:
-                    AbrirFormulario(new FormularioInstitucion());
+                    //AbrirFormulario(new FormularioInstitución());
                     break;
                 case ContextoMenu.Facultad:
-                    AbrirFormulario(new FormularioFacultad());
+                    //AbrirFormulario(new FormularioFacultad());
                     break;
                 case ContextoMenu.Estudiantes:
-                    AbrirFormulario(new FormularioEstudiantes());
+                    AbrirFormulario(new crearestudiante());
                     break;
                 case ContextoMenu.Docentes:
-                    AbrirFormulario(new FormularioDocentes());
+                    //AbrirFormulario(new FormularioDocentes());
                     break;
                     // Agrega más casos para otros contextos si es necesario
-            }*/
+            }
         }
 
         private void ButtonModificar_Click(object sender, EventArgs e)
@@ -136,8 +139,25 @@ namespace programa_mamalon_de_pagos.FRONTEND
         // Métodos para abrir formularios
         private void AbrirFormulario(Form formulario)
         {
-            formulario.Show();
+            if (formularioAbierto == null || formularioAbierto.IsDisposed)
+            {
+                formularioAbierto = formulario;
+                formulario.FormClosed += (sender, e) => { formularioAbierto = null; };
+                formulario.Show();
+            }
+            else
+            {
+                formularioAbierto.Focus();
+            }
         }
+        private void SecondMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (formularioAbierto != null && !formularioAbierto.IsDisposed)
+            {
+                formularioAbierto.Close();
+            }
+        }
+
     }
 
 }
