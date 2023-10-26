@@ -79,12 +79,6 @@ namespace programa_mamalon_de_pagos
         }
 
 
-        // Método para retornar la info
-        public string ObtenerInformacion()
-        {
-            return $"ID: {Carnet}, Nombre: {NombreCompleto},Carrera o grado:{CarreraGrado} ,Seccion: {Seccion}, Correo Electrónico: {CorreoElectronico}, Teléfono: {Telefono}, Institución: {Institucion}, Facultad: {Facultad}, Jornada: {Jornada}";
-        }
-
         //Metodo para actualizar la info
         public void ActualizarEstudiante()
         {
