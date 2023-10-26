@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace programa_mamalon_de_pagos
 {
@@ -22,7 +23,7 @@ namespace programa_mamalon_de_pagos
 
 
         // Constructor
-        public Estudiante(int carnet, string nombrecompleto, string apellido, string carreragrado, string seccion, string correoElectronico, string telefono, string institucion, string facultad, string jornada)
+        public Estudiante(int carnet, string nombrecompleto, string carreragrado, string seccion, string correoElectronico, string telefono, string institucion, string facultad, string jornada)
         {
             Carnet = carnet;
             NombreCompleto = nombrecompleto;
@@ -34,6 +35,49 @@ namespace programa_mamalon_de_pagos
             Facultad = facultad;
             Jornada = jornada;  
         }
+        public void InsertarEstudiante()
+        {
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+
+                string checkCarnetQuery = "SELECT COUNT(*) FROM Estudiantes WHERE Carnet = @Carnet;";
+                using (SQLiteCommand checkCarnetCmd = new SQLiteCommand(checkCarnetQuery, connection))
+                {
+                    checkCarnetCmd.Parameters.AddWithValue("@Carnet", Carnet);
+                    int count = Convert.ToInt32(checkCarnetCmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        throw new Exception("El carnet ya existe en la base de datos.");
+                    }
+                }
+
+                string formattedCarnet = $"{Carnet / 1000000:0000}-{(Carnet / 10000) % 100:00}-{Carnet % 10000:0000}";
+
+                string insertQuery = "INSERT INTO Estudiantes (Carnet, NombreCompleto, CarreraGrado, Seccion, CorreoElectronico, Telefono, Institucion, Facultad, Jornada) " +
+                                    "VALUES (@Carnet, @NombreCompleto, @CarreraGrado, @Seccion, @CorreoElectronico, @Telefono, @Institucion, @Facultad, @Jornada);";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Carnet", formattedCarnet);
+                    cmd.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
+                    cmd.Parameters.AddWithValue("@CarreraGrado", CarreraGrado);
+                    cmd.Parameters.AddWithValue("@Seccion", Seccion);
+                    cmd.Parameters.AddWithValue("@CorreoElectronico", CorreoElectronico);
+                    cmd.Parameters.AddWithValue("@Telefono", Telefono);
+                    cmd.Parameters.AddWithValue("@Institucion", Institucion);
+                    cmd.Parameters.AddWithValue("@Facultad", Facultad);
+                    cmd.Parameters.AddWithValue("@Jornada", Jornada);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         // Método para retornar la info
         public string ObtenerInformacion()
@@ -42,24 +86,54 @@ namespace programa_mamalon_de_pagos
         }
 
         //Metodo para actualizar la info
-        public void ActualizarInformacion(string nuevonombrecompleto, string nuevaCarreraGrado, string nuevaSeccion, string nuevoCorreo, string nuevoTelefono, string nuevainstitucion, string nuevafacultad,string nuevajornada)
+        public void ActualizarEstudiante()
         {
-            NombreCompleto = nuevonombrecompleto;
-            CarreraGrado = nuevaCarreraGrado;
-            Seccion = nuevaSeccion;
-            CorreoElectronico = nuevoCorreo;
-            Telefono = nuevoTelefono;
-            Institucion = nuevainstitucion;
-            Facultad = nuevajornada;
-            Jornada = Jornada;
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Estudiantes SET NombreCompleto = @NombreCompleto, CarreraGrado = @CarreraGrado, Seccion = @Seccion, " +
+                                    "CorreoElectronico = @CorreoElectronico, Telefono = @Telefono, Institucion = @Institucion, Facultad = @Facultad, Jornada = @Jornada " +
+                                    "WHERE Carnet = @Carnet;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Carnet", Carnet);
+                    cmd.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
+                    cmd.Parameters.AddWithValue("@CarreraGrado", CarreraGrado);
+                    cmd.Parameters.AddWithValue("@Seccion", Seccion);
+                    cmd.Parameters.AddWithValue("@CorreoElectronico", CorreoElectronico);
+                    cmd.Parameters.AddWithValue("@Telefono", Telefono);
+                    cmd.Parameters.AddWithValue("@Institucion", Institucion);
+                    cmd.Parameters.AddWithValue("@Facultad", Facultad);
+                    cmd.Parameters.AddWithValue("@Jornada", Jornada);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-        //Metodo para eliminar al estudiante(va relacionada con la base de datos)
+
         public void EliminarEstudiante()
         {
-            // Implementa la lógica para eliminar un estudiante de la base de datos.
-            // Eje: BaseDeDatos.EliminarEstudiante(IDEstudiante);
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Estudiantes WHERE Carnet = @Carnet;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Carnet", Carnet);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
+
     }
 
 

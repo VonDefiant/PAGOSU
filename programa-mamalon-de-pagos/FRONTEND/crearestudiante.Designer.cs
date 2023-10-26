@@ -34,12 +34,12 @@
             telefonoalumno = new TextBox();
             EMAILESTUDIANTE = new TextBox();
             SECCIONESTUDIANTE = new TextBox();
-            textBox3 = new TextBox();
             NACIMIENTOESTUDIANTE = new TextBox();
             SAVEBUTTON = new Button();
             Cbcarrera = new ComboBox();
             CbFacultad = new ComboBox();
             Cbinstitucion = new ComboBox();
+            cbjornada = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -97,17 +97,6 @@
             SECCIONESTUDIANTE.TextAlign = HorizontalAlignment.Center;
             SECCIONESTUDIANTE.TextChanged += SECCIONESTUDIANTE_TextChanged;
             // 
-            // textBox3
-            // 
-            textBox3.ForeColor = SystemColors.InfoText;
-            textBox3.Location = new Point(520, 177);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 8;
-            textBox3.Text = "JORNADA";
-            textBox3.TextAlign = HorizontalAlignment.Center;
-            textBox3.TextChanged += textBox3_TextChanged;
-            // 
             // NACIMIENTOESTUDIANTE
             // 
             NACIMIENTOESTUDIANTE.ForeColor = SystemColors.InfoText;
@@ -159,6 +148,17 @@
             Cbinstitucion.Size = new Size(467, 28);
             Cbinstitucion.TabIndex = 13;
             Cbinstitucion.Text = "INTITUCION";
+            Cbinstitucion.SelectedIndexChanged += Cbinstitucion_SelectedIndexChanged;
+            // 
+            // cbjornada
+            // 
+            cbjornada.FormattingEnabled = true;
+            cbjornada.Location = new Point(520, 177);
+            cbjornada.Name = "cbjornada";
+            cbjornada.Size = new Size(123, 28);
+            cbjornada.TabIndex = 14;
+            cbjornada.Text = "JORNADA";
+            cbjornada.SelectedIndexChanged += cbjornada_SelectedIndexChanged;
             // 
             // crearestudiante
             // 
@@ -166,12 +166,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
             ClientSize = new Size(677, 301);
+            Controls.Add(cbjornada);
             Controls.Add(Cbinstitucion);
             Controls.Add(CbFacultad);
             Controls.Add(Cbcarrera);
             Controls.Add(SAVEBUTTON);
             Controls.Add(NACIMIENTOESTUDIANTE);
-            Controls.Add(textBox3);
             Controls.Add(SECCIONESTUDIANTE);
             Controls.Add(EMAILESTUDIANTE);
             Controls.Add(telefonoalumno);
@@ -180,6 +180,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "crearestudiante";
             Text = "crearestudiante";
+            Load += crearestudiante_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -192,11 +193,11 @@
         private TextBox telefonoalumno;
         private TextBox EMAILESTUDIANTE;
         private TextBox SECCIONESTUDIANTE;
-        private TextBox textBox3;
         private TextBox NACIMIENTOESTUDIANTE;
         private Button SAVEBUTTON;
         private ComboBox Cbcarrera;
         private ComboBox CbFacultad;
         private ComboBox Cbinstitucion;
+        private ComboBox cbjornada;
     }
 }
