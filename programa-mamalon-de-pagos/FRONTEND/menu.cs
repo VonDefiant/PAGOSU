@@ -87,8 +87,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void PAGOSBT_Click(object sender, EventArgs e)
         {
-            SecondMenu formularioSecondMenu = new SecondMenu(SecondMenu.ContextoMenu.RealizarPagos);
-            formularioSecondMenu.ShowDialog();
+            Pagos formularioPagos = new Pagos ();
+            formularioPagos.ShowDialog();
         }
 
         private void PERIODOBT_Click(object sender, EventArgs e)
