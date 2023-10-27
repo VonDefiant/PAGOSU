@@ -10,7 +10,7 @@ namespace programa_mamalon_de_pagos.BACKEND
 {
     public class Curso
     {
-        // Propiedades.
+        // Propiedades
         public int IDCurso { get; set; }
         public string NombreCurso { get; set; }
         public string Descripcion { get; set; }
@@ -61,24 +61,6 @@ namespace programa_mamalon_de_pagos.BACKEND
         {
             NombreCurso = nuevoNombre;
             Descripcion = nuevaDescripcion;
-        }
-        public void ActualizarInformacionEnLaBaseDeDatos()
-        {
-            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
-            {
-                connection.Open();
-
-                string updateQuery = "UPDATE Cursos SET NombreCurso = @NombreCurso, Descripcion = @Descripcion WHERE IDCurso = @IDCurso;";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
-                {
-                    cmd.Parameters.AddWithValue("@IDCurso", IDCurso);
-                    cmd.Parameters.AddWithValue("@NombreCurso", NombreCurso);
-                    cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
         }
     }
 }

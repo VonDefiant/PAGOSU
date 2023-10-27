@@ -33,7 +33,6 @@ namespace programa_mamalon_de_pagos
             Jornada = jornada;
         }
 
-        //Método para conexion db
         public void InsertarEstudiante()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
@@ -104,7 +103,7 @@ namespace programa_mamalon_de_pagos
             }
         }
 
-        //Método para eliminar
+
         public void EliminarEstudiante()
         {
             string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
@@ -124,4 +123,8 @@ namespace programa_mamalon_de_pagos
         }
 
     }
+
+
+
+
 }

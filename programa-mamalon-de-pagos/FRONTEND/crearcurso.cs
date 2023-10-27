@@ -1,13 +1,7 @@
-﻿using Microsoft.VisualBasic.Logging;
-using programa_mamalon_de_pagos.BACKEND;
+﻿using programa_mamalon_de_pagos.BACKEND;
 using System;
-using System.Data.SQLite;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
@@ -46,7 +40,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
             }
         }
 
-
+ 
 
 
         private void dgvAgregar_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -71,33 +65,5 @@ namespace programa_mamalon_de_pagos.FRONTEND
             txtDescripcion.Text = "";
 
         }
-
-        private void crearcurso_Load(object sender, EventArgs e)
-        {
-            CargarCursos();
-        }
-        private void CargarCursos()
-        {
-            // Conecta a la base de datos y obtiene los datos de los cursos
-            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
-            string selectQuery = "SELECT nombrecurso, descripcion FROM Cursos";
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(selectQuery, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dataAdapter.Fill(dt);
-
-                    // Asigna los datos al DataGridView
-                    dgvAgregar.DataSource = dt;
-                }
-            }
-        }
-
-
-
     }
 }
