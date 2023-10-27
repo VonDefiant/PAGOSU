@@ -8,7 +8,7 @@ namespace programa_mamalon_de_pagos.BACKEND
 {
     public class Grado_Periodo
     {
-        public int Grado {  get; set; }
+        public int Grado {  get; set;  }
         public string Periodo { get; set; }
 
         public Grado_Periodo(int grado, string periodo) 
