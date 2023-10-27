@@ -10,7 +10,7 @@ namespace programa_mamalon_de_pagos.BACKEND
 {
     public class Curso
     {
-        // Propiedades
+        // Propiedades.
         public int IDCurso { get; set; }
         public string NombreCurso { get; set; }
         public string Descripcion { get; set; }
