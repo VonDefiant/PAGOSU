@@ -141,6 +141,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "crearcurso";
             Text = "crearcurso";
+            Load += crearcurso_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAgregar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
