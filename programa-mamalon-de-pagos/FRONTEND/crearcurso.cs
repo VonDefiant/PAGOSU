@@ -11,47 +11,59 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
             InitializeComponent();
 
-            // Agregar las columnas al DataGridView
-            dgvAgregar.Columns.Add("IDCurso", "ID Curso");
-            dgvAgregar.Columns.Add("NombreCurso", "Nombre del Curso");
-            dgvAgregar.Columns.Add("Descripcion", "Descripción del Curso");
         }
 
         private void btnAgregarCurso_Click(object sender, EventArgs e)
         {
-            int idCurso;
-            if (int.TryParse(txtIDCurso.Text, out idCurso))
+            try
             {
-                // Verificar si el ID del curso ya existe en las filas existentes
-                bool idRepetido = dgvAgregar.Rows.Cast<DataGridViewRow>().Any(row => Convert.ToInt32(row.Cells["IDCurso"].Value) == idCurso);
+                // Recopila los datos ingresados por el usuario desde los controles del formulario
+                string nombrecurso = txtNombreCurso.Text;
+                string descripcion = txtDescripcion.Text;
 
-                if (idRepetido)
-                {
-                    MessageBox.Show("El ID del curso ya existe. Por favor, ingrese un ID único.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    string nombreCurso = txtNombreCurso.Text;
-                    string descripcion = txtDescripcion.Text;
+                // Crea una instancia de la clase Curso con los datos ingresados
+                Curso curso = new Curso(nombrecurso, descripcion);
 
-                    // Agregar un nuevo curso al DataGridView
-                    dgvAgregar.Rows.Add(idCurso, nombreCurso, descripcion);
+                // Llama al método Insertarcurso para guardar los datos en la base de datos
+                curso.InsertarCurso();
 
-                    // Limpiar los TextBox después de agregar el curso
-                    LimpiarTextBox();
-                }
+                // Muestra un mensaje de éxito
+                MessageBox.Show("Curso insertado exitosamente.");
+
+                // Limpia los controles del formulario después de guardar
+                LimpiarControles();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Por favor, ingrese un ID de curso válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Maneja cualquier excepción que pueda ocurrir al insertar el curso
+                MessageBox.Show("Error al insertar el curso: " + ex.Message);
             }
         }
 
-        private void LimpiarTextBox()
+ 
+
+
+        private void dgvAgregar_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtIDCurso.Clear();
-            txtNombreCurso.Clear();
-            txtDescripcion.Clear();
+
+        }
+
+        private void txtNombreCurso_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LimpiarControles()
+        {
+            // Este método limpia todos los controles del formulario
+            txtNombreCurso.Text = "";
+            txtDescripcion.Text = "";
+
         }
     }
 }
