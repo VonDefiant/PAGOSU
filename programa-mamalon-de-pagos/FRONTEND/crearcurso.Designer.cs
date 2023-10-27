@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crearcurso));
             txtIDCurso = new TextBox();
             txtNombreCurso = new TextBox();
             txtDescripcion = new TextBox();
@@ -37,64 +38,71 @@
             dgvAgregar = new DataGridView();
             btnAgregarCurso = new Button();
             label4 = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvAgregar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtIDCurso
             // 
-            txtIDCurso.Location = new Point(122, 57);
+            txtIDCurso.Location = new Point(139, 76);
+            txtIDCurso.Margin = new Padding(3, 4, 3, 4);
             txtIDCurso.Name = "txtIDCurso";
-            txtIDCurso.Size = new Size(301, 23);
+            txtIDCurso.Size = new Size(343, 27);
             txtIDCurso.TabIndex = 0;
             // 
             // txtNombreCurso
             // 
-            txtNombreCurso.Location = new Point(122, 86);
+            txtNombreCurso.Location = new Point(139, 115);
+            txtNombreCurso.Margin = new Padding(3, 4, 3, 4);
             txtNombreCurso.Name = "txtNombreCurso";
-            txtNombreCurso.Size = new Size(301, 23);
+            txtNombreCurso.Size = new Size(343, 27);
             txtNombreCurso.TabIndex = 1;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(122, 115);
+            txtDescripcion.Location = new Point(139, 153);
+            txtDescripcion.Margin = new Padding(3, 4, 3, 4);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(301, 23);
+            txtDescripcion.Size = new Size(343, 27);
             txtDescripcion.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 60);
+            label1.Location = new Point(14, 80);
             label1.Name = "label1";
-            label1.Size = new Size(54, 15);
+            label1.Size = new Size(67, 20);
             label1.TabIndex = 5;
             label1.Text = "ID_Curso";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 89);
+            label2.Location = new Point(14, 119);
             label2.Name = "label2";
-            label2.Size = new Size(104, 15);
+            label2.Size = new Size(130, 20);
             label2.TabIndex = 6;
             label2.Text = "Nombre del Curso";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 118);
+            label3.Location = new Point(14, 157);
             label3.Name = "label3";
-            label3.Size = new Size(69, 15);
+            label3.Size = new Size(87, 20);
             label3.TabIndex = 7;
             label3.Text = "Descripción";
             // 
             // dgvAgregar
             // 
             dgvAgregar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAgregar.Location = new Point(12, 183);
+            dgvAgregar.Location = new Point(14, 244);
+            dgvAgregar.Margin = new Padding(3, 4, 3, 4);
             dgvAgregar.Name = "dgvAgregar";
+            dgvAgregar.RowHeadersWidth = 51;
             dgvAgregar.RowTemplate.Height = 25;
-            dgvAgregar.Size = new Size(411, 290);
+            dgvAgregar.Size = new Size(470, 387);
             dgvAgregar.TabIndex = 9;
             // 
             // btnAgregarCurso
@@ -102,9 +110,10 @@
             btnAgregarCurso.BackColor = SystemColors.Menu;
             btnAgregarCurso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarCurso.ForeColor = Color.YellowGreen;
-            btnAgregarCurso.Location = new Point(12, 154);
+            btnAgregarCurso.Location = new Point(14, 205);
+            btnAgregarCurso.Margin = new Padding(3, 4, 3, 4);
             btnAgregarCurso.Name = "btnAgregarCurso";
-            btnAgregarCurso.Size = new Size(411, 23);
+            btnAgregarCurso.Size = new Size(470, 31);
             btnAgregarCurso.TabIndex = 11;
             btnAgregarCurso.Text = "Agregar";
             btnAgregarCurso.UseVisualStyleBackColor = false;
@@ -114,30 +123,44 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(94, 9);
+            label4.Location = new Point(233, 24);
             label4.Name = "label4";
-            label4.Size = new Size(229, 30);
+            label4.Size = new Size(107, 37);
             label4.TabIndex = 12;
-            label4.Text = "Diamante pa' Free fire";
+            label4.Text = "CURSO";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.cursos;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(14, 7);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(119, 70);
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
             // 
             // crearcurso
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(434, 485);
+            ClientSize = new Size(496, 647);
+            Controls.Add(pictureBox1);
             Controls.Add(label4);
             Controls.Add(btnAgregarCurso);
             Controls.Add(dgvAgregar);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtDescripcion);
             Controls.Add(txtNombreCurso);
             Controls.Add(txtIDCurso);
+            Controls.Add(label2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "crearcurso";
             Text = "crearcurso";
             ((System.ComponentModel.ISupportInitialize)dgvAgregar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -153,5 +176,6 @@
         private DataGridView dgvAgregar;
         private Button btnAgregarCurso;
         private Label label4;
+        private PictureBox pictureBox1;
     }
 }
