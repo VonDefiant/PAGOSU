@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pagos));
             button1 = new Button();
             label1 = new Label();
             listBox1 = new ListBox();
@@ -85,14 +84,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Wheat;
             ClientSize = new Size(1208, 731);
             Controls.Add(textBox2);
             Controls.Add(label2);
             Controls.Add(listBox1);
             Controls.Add(label1);
             Controls.Add(button1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Pagos";
             Text = "Pagos";
             ResumeLayout(false);

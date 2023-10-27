@@ -48,8 +48,7 @@
             dataGridView8 = new DataGridView();
             label9 = new Label();
             dataGridView9 = new DataGridView();
-            buscarboton = new Button();
-            label10 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -264,35 +263,23 @@
             dataGridView9.Size = new Size(517, 29);
             dataGridView9.TabIndex = 17;
             // 
-            // buscarboton
+            // button1
             // 
-            buscarboton.BackColor = Color.Wheat;
-            buscarboton.BackgroundImage = Properties.Resources.informacion;
-            buscarboton.BackgroundImageLayout = ImageLayout.Zoom;
-            buscarboton.Location = new Point(230, 558);
-            buscarboton.Margin = new Padding(3, 4, 3, 4);
-            buscarboton.Name = "buscarboton";
-            buscarboton.Size = new Size(105, 79);
-            buscarboton.TabIndex = 19;
-            buscarboton.UseVisualStyleBackColor = false;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(253, 637);
-            label10.Name = "label10";
-            label10.Size = new Size(64, 20);
-            label10.TabIndex = 20;
-            label10.Text = "BUSCAR";
+            button1.Location = new Point(464, 584);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(97, 59);
+            button1.TabIndex = 19;
+            button1.Text = "BUSCAR";
+            button1.UseVisualStyleBackColor = true;
             // 
             // consultaaumno
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(600, 666);
-            Controls.Add(label10);
-            Controls.Add(buscarboton);
+            ClientSize = new Size(600, 659);
+            Controls.Add(button1);
             Controls.Add(label9);
             Controls.Add(dataGridView9);
             Controls.Add(label8);
@@ -350,7 +337,6 @@
         private DataGridView dataGridView8;
         private Label label9;
         private DataGridView dataGridView9;
-        private Button buscarboton;
-        private Label label10;
+        private Button button1;
     }
 }
