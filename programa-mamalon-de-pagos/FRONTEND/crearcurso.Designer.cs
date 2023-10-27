@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crearcurso));
-            txtIDCurso = new TextBox();
             txtNombreCurso = new TextBox();
             txtDescripcion = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             dgvAgregar = new DataGridView();
@@ -43,43 +41,28 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // txtIDCurso
-            // 
-            txtIDCurso.Location = new Point(139, 76);
-            txtIDCurso.Margin = new Padding(3, 4, 3, 4);
-            txtIDCurso.Name = "txtIDCurso";
-            txtIDCurso.Size = new Size(343, 27);
-            txtIDCurso.TabIndex = 0;
-            // 
             // txtNombreCurso
             // 
-            txtNombreCurso.Location = new Point(139, 115);
+            txtNombreCurso.Location = new Point(14, 98);
             txtNombreCurso.Margin = new Padding(3, 4, 3, 4);
             txtNombreCurso.Name = "txtNombreCurso";
-            txtNombreCurso.Size = new Size(343, 27);
+            txtNombreCurso.Size = new Size(470, 27);
             txtNombreCurso.TabIndex = 1;
+            txtNombreCurso.TextChanged += txtNombreCurso_TextChanged;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(139, 153);
+            txtDescripcion.Location = new Point(14, 153);
             txtDescripcion.Margin = new Padding(3, 4, 3, 4);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(343, 27);
+            txtDescripcion.Size = new Size(470, 27);
             txtDescripcion.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(14, 80);
-            label1.Name = "label1";
-            label1.Size = new Size(67, 20);
-            label1.TabIndex = 5;
-            label1.Text = "ID_Curso";
+            txtDescripcion.TextChanged += txtDescripcion_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 119);
+            label2.Location = new Point(210, 74);
             label2.Name = "label2";
             label2.Size = new Size(130, 20);
             label2.TabIndex = 6;
@@ -88,7 +71,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(14, 157);
+            label3.Location = new Point(210, 129);
             label3.Name = "label3";
             label3.Size = new Size(87, 20);
             label3.TabIndex = 7;
@@ -104,6 +87,7 @@
             dgvAgregar.RowTemplate.Height = 25;
             dgvAgregar.Size = new Size(470, 387);
             dgvAgregar.TabIndex = 9;
+            dgvAgregar.CellContentClick += dgvAgregar_CellContentClick;
             // 
             // btnAgregarCurso
             // 
@@ -150,10 +134,8 @@
             Controls.Add(btnAgregarCurso);
             Controls.Add(dgvAgregar);
             Controls.Add(label3);
-            Controls.Add(label1);
             Controls.Add(txtDescripcion);
             Controls.Add(txtNombreCurso);
-            Controls.Add(txtIDCurso);
             Controls.Add(label2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
@@ -166,11 +148,8 @@
         }
 
         #endregion
-
-        private TextBox txtIDCurso;
         private TextBox txtNombreCurso;
         private TextBox txtDescripcion;
-        private Label label1;
         private Label label2;
         private Label label3;
         private DataGridView dgvAgregar;
