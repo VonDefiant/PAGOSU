@@ -36,6 +36,7 @@
             label3 = new Label();
             dgvAgregar = new DataGridView();
             btnAgregarCurso = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvAgregar).BeginInit();
             SuspendLayout();
             // 
@@ -93,24 +94,39 @@
             dgvAgregar.Location = new Point(12, 183);
             dgvAgregar.Name = "dgvAgregar";
             dgvAgregar.RowTemplate.Height = 25;
-            dgvAgregar.Size = new Size(978, 290);
+            dgvAgregar.Size = new Size(411, 290);
             dgvAgregar.TabIndex = 9;
             // 
             // btnAgregarCurso
             // 
-            btnAgregarCurso.Location = new Point(521, 89);
+            btnAgregarCurso.BackColor = SystemColors.Menu;
+            btnAgregarCurso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregarCurso.ForeColor = Color.YellowGreen;
+            btnAgregarCurso.Location = new Point(12, 154);
             btnAgregarCurso.Name = "btnAgregarCurso";
-            btnAgregarCurso.Size = new Size(261, 23);
+            btnAgregarCurso.Size = new Size(411, 23);
             btnAgregarCurso.TabIndex = 11;
             btnAgregarCurso.Text = "Agregar";
-            btnAgregarCurso.UseVisualStyleBackColor = true;
+            btnAgregarCurso.UseVisualStyleBackColor = false;
             btnAgregarCurso.Click += btnAgregarCurso_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(94, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(229, 30);
+            label4.TabIndex = 12;
+            label4.Text = "Diamante pa' Free fire";
             // 
             // crearcurso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1002, 485);
+            BackColor = Color.Wheat;
+            ClientSize = new Size(434, 485);
+            Controls.Add(label4);
             Controls.Add(btnAgregarCurso);
             Controls.Add(dgvAgregar);
             Controls.Add(label3);
@@ -136,5 +152,6 @@
         private Label label3;
         private DataGridView dgvAgregar;
         private Button btnAgregarCurso;
+        private Label label4;
     }
 }
