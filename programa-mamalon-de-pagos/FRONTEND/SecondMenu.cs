@@ -85,7 +85,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
             switch (contexto)
             {
                 case ContextoMenu.Institucion:
-                    //AbrirFormulario(new FormularioInstitución());
+                    AbrirFormulario(new crearinstitución());
                     break;
                 case ContextoMenu.Facultad:
                     //AbrirFormulario(new FormularioFacultad());
