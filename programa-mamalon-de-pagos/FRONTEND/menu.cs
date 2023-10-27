@@ -37,9 +37,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*crearestudiante frmcrearestudiante = new crearestudiante();
-            this.Hide();
-            frmcrearestudiante.Show();*/
+
 
             SecondMenu formularioSecondMenu = new SecondMenu(SecondMenu.ContextoMenu.Estudiantes);
             formularioSecondMenu.ShowDialog();

@@ -81,7 +81,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 string jornada = cbjornada.Text;
 
                 // Crea una instancia de la clase Estudiante con los datos ingresados
-                Estudiante estudiante = new Estudiante( nombreCompleto, carreraGrado, seccion, correoElectronico, telefono, institucion, facultad, jornada);
+                Estudiante estudiante = new Estudiante(nombreCompleto, carreraGrado, seccion, correoElectronico, telefono, institucion, facultad, jornada);
 
                 // Llama al método InsertarEstudiante para guardar los datos en la base de datos
                 estudiante.InsertarEstudiante();
@@ -148,7 +148,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 string jornada = cbjornada.Text;
 
                 // Crea una instancia de la clase Estudiante con los datos ingresados
-                Estudiante estudiante = new Estudiante( nombreCompleto, carreraGrado, seccion, correoElectronico, telefono, institucion, facultad, jornada);
+                Estudiante estudiante = new Estudiante(nombreCompleto, carreraGrado, seccion, correoElectronico, telefono, institucion, facultad, jornada);
 
                 // Llama al método InsertarEstudiante para guardar los datos en la base de datos
                 estudiante.InsertarEstudiante();
