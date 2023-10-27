@@ -41,8 +41,8 @@
             // 
             // ButtonEliminar
             // 
-            ButtonEliminar.BackColor = Color.White;
-            ButtonEliminar.BackgroundImage = (Image)resources.GetObject("ButtonEliminar.BackgroundImage");
+            ButtonEliminar.BackColor = Color.Wheat;
+            ButtonEliminar.BackgroundImage = Properties.Resources.boton_eliminar;
             ButtonEliminar.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonEliminar.ForeColor = SystemColors.ControlText;
             ButtonEliminar.Location = new Point(537, 93);
@@ -54,8 +54,8 @@
             // 
             // ButtonAgregar
             // 
-            ButtonAgregar.BackColor = Color.White;
-            ButtonAgregar.BackgroundImage = (Image)resources.GetObject("ButtonAgregar.BackgroundImage");
+            ButtonAgregar.BackColor = Color.Wheat;
+            ButtonAgregar.BackgroundImage = Properties.Resources.agregar_archivo;
             ButtonAgregar.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonAgregar.ForeColor = SystemColors.ControlText;
             ButtonAgregar.Location = new Point(55, 93);
@@ -67,8 +67,8 @@
             // 
             // ButtonModificar
             // 
-            ButtonModificar.BackColor = Color.White;
-            ButtonModificar.BackgroundImage = (Image)resources.GetObject("ButtonModificar.BackgroundImage");
+            ButtonModificar.BackColor = Color.Wheat;
+            ButtonModificar.BackgroundImage = Properties.Resources.modificado;
             ButtonModificar.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonModificar.ForeColor = SystemColors.ControlText;
             ButtonModificar.Location = new Point(301, 93);
@@ -150,6 +150,7 @@
             Controls.Add(ButtonAgregar);
             Controls.Add(ButtonEliminar);
             ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SecondMenu";
             Text = "SecondMenu";
             ResumeLayout(false);
