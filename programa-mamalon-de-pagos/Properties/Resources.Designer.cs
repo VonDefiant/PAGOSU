@@ -113,26 +113,6 @@ namespace programa_mamalon_de_pagos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap consultas1 {
-            get {
-                object obj = ResourceManager.GetObject("consultas1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cursos {
-            get {
-                object obj = ResourceManager.GetObject("cursos", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap estudiante {
             get {
                 object obj = ResourceManager.GetObject("estudiante", resourceCulture);
@@ -156,16 +136,6 @@ namespace programa_mamalon_de_pagos.Properties {
         internal static System.Drawing.Bitmap imagenlogin {
             get {
                 object obj = ResourceManager.GetObject("imagenlogin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap informacion {
-            get {
-                object obj = ResourceManager.GetObject("informacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

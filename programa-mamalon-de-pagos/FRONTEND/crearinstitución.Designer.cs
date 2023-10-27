@@ -29,90 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crearinstitución));
-            pictureBox1 = new PictureBox();
-            txnombre = new TextBox();
-            label1 = new Label();
-            savebutton = new Button();
-            label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = Properties.Resources.institucion;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(172, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131, 102);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // txnombre
-            // 
-            txnombre.Location = new Point(32, 154);
-            txnombre.Name = "txnombre";
-            txnombre.Size = new Size(409, 27);
-            txnombre.TabIndex = 1;
-            txnombre.TextChanged += txnombre_TextChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(57, 117);
-            label1.Name = "label1";
-            label1.Size = new Size(384, 25);
-            label1.TabIndex = 2;
-            label1.Text = "INGRESE EL NOMBRE DE LA INSTITUCION";
-            // 
-            // savebutton
-            // 
-            savebutton.BackColor = Color.Wheat;
-            savebutton.BackgroundImage = Properties.Resources.salvar;
-            savebutton.BackgroundImageLayout = ImageLayout.Zoom;
-            savebutton.Location = new Point(189, 198);
-            savebutton.Name = "savebutton";
-            savebutton.Size = new Size(94, 84);
-            savebutton.TabIndex = 3;
-            savebutton.UseVisualStyleBackColor = false;
-            savebutton.Click += savebutton_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(189, 302);
-            label2.Name = "label2";
-            label2.Size = new Size(104, 25);
-            label2.TabIndex = 4;
-            label2.Text = "GUARDAR";
             // 
             // crearinstitución
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(469, 348);
-            Controls.Add(label2);
-            Controls.Add(savebutton);
-            Controls.Add(label1);
-            Controls.Add(txnombre);
-            Controls.Add(pictureBox1);
+            ClientSize = new Size(800, 450);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "crearinstitución";
             Text = "Creación de instituciones";
-            Load += crearinstitución_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
-        private TextBox txnombre;
-        private Label label1;
-        private Button savebutton;
-        private Label label2;
     }
 }
