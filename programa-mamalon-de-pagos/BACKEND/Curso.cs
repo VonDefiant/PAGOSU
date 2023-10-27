@@ -16,13 +16,13 @@ namespace programa_mamalon_de_pagos.BACKEND
         public string Descripcion { get; set; }
 
         // Constructor
-        public Curso(int idCurso, string nombreCurso, string descripcion)
+        public Curso( string nombreCurso, string descripcion)
         {
-            IDCurso = idCurso;
+
             NombreCurso = nombreCurso;
             Descripcion = descripcion;
         }
-        public void InsertarEstudiante()
+        public void InsertarCurso()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
             {
