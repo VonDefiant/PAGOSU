@@ -37,7 +37,7 @@ namespace programa_mamalon_de_pagos
         }
         public void InsertarEstudiante()
         {
-            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+            string connectionString = "Data Source = C:/Users/fg144/OneDrive/Escritorio/PAGOSU/programa-mamalon-de-pagos/BACKEND/EXACTUS.db; Version = 3; ";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
