@@ -37,33 +37,30 @@ namespace programa_mamalon_de_pagos
         }
         public void InsertarEstudiante()
         {
-            string connectionString = "Data Source = C:/Users/fg144/OneDrive/Escritorio/PAGOSU/programa-mamalon-de-pagos/BACKEND/EXACTUS.db; Version = 3; ";
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
             {
                 connection.Open();
 
-
-                string checkCarnetQuery = "SELECT COUNT(*) FROM Estudiantes WHERE Carnet = @Carnet;";
-                using (SQLiteCommand checkCarnetCmd = new SQLiteCommand(checkCarnetQuery, connection))
+                string queryLastCarnet = "SELECT MAX(Carnet) FROM Estudiantes;";
+                using (SQLiteCommand cmdLastCarnet = new SQLiteCommand(queryLastCarnet, connection))
                 {
-                    checkCarnetCmd.Parameters.AddWithValue("@Carnet", Carnet);
-                    int count = Convert.ToInt32(checkCarnetCmd.ExecuteScalar());
-
-                    if (count > 0)
+                    var result = cmdLastCarnet.ExecuteScalar();
+                    if (result != DBNull.Value)
                     {
-                        throw new Exception("El carnet ya existe en la base de datos.");
+                        Carnet = Convert.ToInt32(result) + 1;
+                    }
+                    else
+                    {
+                        Carnet = 1;
                     }
                 }
-
-                string formattedCarnet = $"{Carnet / 1000000:0000}-{(Carnet / 10000) % 100:00}-{Carnet % 10000:0000}";
 
                 string insertQuery = "INSERT INTO Estudiantes (Carnet, NombreCompleto, CarreraGrado, Seccion, CorreoElectronico, Telefono, Institucion, Facultad, Jornada) " +
                                     "VALUES (@Carnet, @NombreCompleto, @CarreraGrado, @Seccion, @CorreoElectronico, @Telefono, @Institucion, @Facultad, @Jornada);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
                 {
-                    cmd.Parameters.AddWithValue("@Carnet", formattedCarnet);
+                    cmd.Parameters.AddWithValue("@Carnet", Carnet);
                     cmd.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
                     cmd.Parameters.AddWithValue("@CarreraGrado", CarreraGrado);
                     cmd.Parameters.AddWithValue("@Seccion", Seccion);

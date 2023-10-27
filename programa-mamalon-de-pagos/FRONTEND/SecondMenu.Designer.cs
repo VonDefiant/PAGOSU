@@ -37,13 +37,12 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            LabelTitulo = new Label();
             SuspendLayout();
             // 
             // ButtonEliminar
             // 
-            ButtonEliminar.BackColor = Color.White;
-            ButtonEliminar.BackgroundImage = (Image)resources.GetObject("ButtonEliminar.BackgroundImage");
+            ButtonEliminar.BackColor = Color.Wheat;
+            ButtonEliminar.BackgroundImage = Properties.Resources.boton_eliminar;
             ButtonEliminar.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonEliminar.ForeColor = SystemColors.ControlText;
             ButtonEliminar.Location = new Point(537, 93);
@@ -55,8 +54,8 @@
             // 
             // ButtonAgregar
             // 
-            ButtonAgregar.BackColor = Color.White;
-            ButtonAgregar.BackgroundImage = (Image)resources.GetObject("ButtonAgregar.BackgroundImage");
+            ButtonAgregar.BackColor = Color.Wheat;
+            ButtonAgregar.BackgroundImage = Properties.Resources.agregar_archivo;
             ButtonAgregar.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonAgregar.ForeColor = SystemColors.ControlText;
             ButtonAgregar.Location = new Point(55, 93);
@@ -68,8 +67,8 @@
             // 
             // ButtonModificar
             // 
-            ButtonModificar.BackColor = Color.White;
-            ButtonModificar.BackgroundImage = (Image)resources.GetObject("ButtonModificar.BackgroundImage");
+            ButtonModificar.BackColor = Color.Wheat;
+            ButtonModificar.BackgroundImage = Properties.Resources.modificado;
             ButtonModificar.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonModificar.ForeColor = SystemColors.ControlText;
             ButtonModificar.Location = new Point(301, 93);
@@ -136,23 +135,12 @@
             label3.TabIndex = 13;
             label3.Text = "Eliminar";
             // 
-            // LabelTitulo
-            // 
-            LabelTitulo.AutoSize = true;
-            LabelTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitulo.Location = new Point(285, 9);
-            LabelTitulo.Name = "LabelTitulo";
-            LabelTitulo.Size = new Size(21, 30);
-            LabelTitulo.TabIndex = 14;
-            LabelTitulo.Text = "-";
-            // 
             // SecondMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightGreen;
+            BackColor = Color.Wheat;
             ClientSize = new Size(800, 450);
-            Controls.Add(LabelTitulo);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -162,6 +150,7 @@
             Controls.Add(ButtonAgregar);
             Controls.Add(ButtonEliminar);
             ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SecondMenu";
             Text = "SecondMenu";
             ResumeLayout(false);
@@ -177,6 +166,5 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label LabelTitulo;
     }
 }
