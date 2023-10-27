@@ -68,10 +68,10 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.alumno;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(21, 31);
+            pictureBox1.Location = new Point(8, 31);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(118, 122);
+            pictureBox1.Size = new Size(142, 220);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -148,7 +148,6 @@
             Cbinstitucion.Name = "Cbinstitucion";
             Cbinstitucion.Size = new Size(409, 23);
             Cbinstitucion.TabIndex = 13;
-            Cbinstitucion.Text = "INTITUCION";
             Cbinstitucion.SelectedIndexChanged += Cbinstitucion_SelectedIndexChanged;
             // 
             // cbjornada
