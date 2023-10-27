@@ -12,34 +12,20 @@ namespace programa_mamalon_de_pagos.BACKEND
         public int IDCurso { get; set; }
         public string NombreCurso { get; set; }
         public string Descripcion { get; set; }
-        public Profesor ProfesorEncargado { get; set; }
 
         // Constructor
-        public Curso(int idCurso, string nombreCurso, string descripcion, Profesor profesorEncargado)
+        public Curso(int idCurso, string nombreCurso, string descripcion)
         {
             IDCurso = idCurso;
             NombreCurso = nombreCurso;
             Descripcion = descripcion;
-            ProfesorEncargado = profesorEncargado;
         }
 
-        // Métodos
-        public string ObtenerInformacion()
-        {
-            return $"ID: {IDCurso}, Nombre del Curso: {NombreCurso}, Descripción: {Descripcion}, Profesor Encargado: {ProfesorEncargado.Nombre} {ProfesorEncargado.Apellido}";
-        }
-
-        public void ActualizarInformacion(string nuevoNombre, string nuevaDescripcion, Profesor nuevoProfesor)
+        // Método para actualizar información
+        public void ActualizarInformacion(string nuevoNombre, string nuevaDescripcion)
         {
             NombreCurso = nuevoNombre;
             Descripcion = nuevaDescripcion;
-            ProfesorEncargado = nuevoProfesor;
-        }
-
-        public void EliminarCurso()
-        {
-            // Implementa la lógica para eliminar un curso de la base de datos.
-            // Por ejemplo: BaseDeDatos.EliminarCurso(IDCurso);
         }
     }
 }

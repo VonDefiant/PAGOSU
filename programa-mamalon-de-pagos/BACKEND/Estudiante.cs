@@ -37,7 +37,7 @@ namespace programa_mamalon_de_pagos
         }
         public void InsertarEstudiante()
         {
-            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+            string connectionString = "Data Source = C:/Users/fg144/OneDrive/Escritorio/PAGOSU/programa-mamalon-de-pagos/BACKEND/EXACTUS.db; Version = 3; ";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -78,12 +78,6 @@ namespace programa_mamalon_de_pagos
             }
         }
 
-
-        // Método para retornar la info
-        public string ObtenerInformacion()
-        {
-            return $"ID: {Carnet}, Nombre: {NombreCompleto},Carrera o grado:{CarreraGrado} ,Seccion: {Seccion}, Correo Electrónico: {CorreoElectronico}, Teléfono: {Telefono}, Institución: {Institucion}, Facultad: {Facultad}, Jornada: {Jornada}";
-        }
 
         //Metodo para actualizar la info
         public void ActualizarEstudiante()

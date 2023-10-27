@@ -132,5 +132,39 @@ namespace programa_mamalon_de_pagos.FRONTEND
             CbFacultad.SelectedIndex = -1; // Reinicia la selección en el ComboBox
             cbjornada.SelectedIndex = -1; // Reinicia la selección en el ComboBox
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Recopila los datos ingresados por el usuario desde los controles del formulario
+                string nombreCompleto = nombreestuadiante.Text;
+                string correoElectronico = EMAILESTUDIANTE.Text;
+                string telefono = telefonoalumno.Text;
+                string seccion = SECCIONESTUDIANTE.Text;
+                string carreraGrado = Cbcarrera.Text;
+                string institucion = Cbinstitucion.Text;
+                string facultad = CbFacultad.Text;
+                string jornada = cbjornada.Text;
+
+                // Crea una instancia de la clase Estudiante con los datos ingresados
+                Estudiante estudiante = new Estudiante(0, nombreCompleto, carreraGrado, seccion, correoElectronico, telefono, institucion, facultad, jornada);
+
+                // Llama al método InsertarEstudiante para guardar los datos en la base de datos
+                estudiante.InsertarEstudiante();
+
+                // Muestra un mensaje de éxito
+                MessageBox.Show("Estudiante insertado exitosamente.");
+
+                // Limpia los controles del formulario después de guardar
+                LimpiarControles();
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier excepción que pueda ocurrir al insertar el estudiante
+                MessageBox.Show("Error al insertar el estudiante: " + ex.Message);
+            }
+
+        }
     }
 }
