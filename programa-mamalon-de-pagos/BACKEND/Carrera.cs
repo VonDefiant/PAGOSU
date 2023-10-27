@@ -20,7 +20,7 @@ namespace programa_mamalon_de_pagos.BACKEND
             NombreCarrera = nombreCarrera;
             Descripcion = descripcion;
         }
-        //Método para conexion db.
+        //Método para conexion db
         public void InsertarEstudiante()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
