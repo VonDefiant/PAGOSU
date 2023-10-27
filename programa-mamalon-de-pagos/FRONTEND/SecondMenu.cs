@@ -106,22 +106,22 @@ namespace programa_mamalon_de_pagos.FRONTEND
         private void ButtonModificar_Click(object sender, EventArgs e)
         {
             // Botón "Modificar": Redirigir a otro formulario según el contexto
-            /*switch (contexto)
+            switch (contexto)
             {
                 case ContextoMenu.Cursos:
-                    AbrirFormulario(new FormularioCursos());
+                    AbrirFormulario(new actualizarcurso());
                     break;
                 case ContextoMenu.Secciones:
-                    AbrirFormulario(new FormularioSecciones());
+                    //AbrirFormulario(new FormularioSecciones());
                     break;
                 case ContextoMenu.RealizarPagos:
-                    AbrirFormulario(new FormularioRealizarPagos());
-                    break;
+                    //AbrirFormulario(new FormularioRealizarPagos());
+                    //break;
                 case ContextoMenu.Periodo:
-                    AbrirFormulario(new FormularioPeriodo());
+                    //AbrirFormulario(new FormularioPeriodo());
                     break;
                     // Agrega más casos para otros contextos si es necesario
-            }/**/
+            }
         }
 
         private void ButtonEliminar_Click(object sender, EventArgs e)
