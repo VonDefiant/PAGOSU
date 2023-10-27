@@ -22,6 +22,7 @@ namespace programa_mamalon_de_pagos.BACKEND
             NombreCurso = nombreCurso;
             Descripcion = descripcion;
         }
+        //Método para conexion db
         public void InsertarCurso()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
@@ -76,6 +77,24 @@ namespace programa_mamalon_de_pagos.BACKEND
                     cmd.Parameters.AddWithValue("@NombreCurso", NombreCurso);
                     cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
 
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        //Método para eliminar
+        public void EliminarCursoEnLaBaseDeDatos()
+        {
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Cursos WHERE IDCurso = @IDCurso;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDCurso", IDCurso);
                     cmd.ExecuteNonQuery();
                 }
             }

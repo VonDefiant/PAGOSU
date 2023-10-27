@@ -122,6 +122,5 @@ namespace programa_mamalon_de_pagos
                 }
             }
         }
-
     }
 }

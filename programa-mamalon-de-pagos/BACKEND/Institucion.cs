@@ -18,7 +18,7 @@ namespace programa_mamalon_de_pagos.BACKEND
             IdInstitucion = idInstitucion;
             Nombre = nombre;
         }
-
+        //Método para conexion db
         public void InsertarInstitucion()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
@@ -47,6 +47,46 @@ namespace programa_mamalon_de_pagos.BACKEND
                     cmd.Parameters.AddWithValue("@IdInstitucion", IdInstitucion);
                     cmd.Parameters.AddWithValue("@Nombre", Nombre);
 
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        //Metodo para actualizar la info
+        public void ActualizarInstitucion()
+        {
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Instituciones SET Nombre = @Nombre " +
+                                    "WHERE IdInstitucion = @IdInstitucion;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdInstitucion", IdInstitucion);
+                    cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                    
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //Método para eliminar
+        public void EliminarEstudiante()
+        {
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Institucion WHERE IdInstitucion = @IdInstitucion;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdInstitucion", IdInstitucion);
                     cmd.ExecuteNonQuery();
                 }
             }
