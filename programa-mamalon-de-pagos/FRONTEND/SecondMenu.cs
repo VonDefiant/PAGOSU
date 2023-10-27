@@ -116,7 +116,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     break;
                 case ContextoMenu.RealizarPagos:
                     //AbrirFormulario(new FormularioRealizarPagos());
-                    //break;
+                    break;
                 case ContextoMenu.Periodo:
                     //AbrirFormulario(new FormularioPeriodo());
                     break;
