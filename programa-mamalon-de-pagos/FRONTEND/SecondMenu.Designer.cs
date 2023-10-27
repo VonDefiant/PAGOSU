@@ -37,7 +37,6 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            LabelTitulo = new Label();
             SuspendLayout();
             // 
             // ButtonEliminar
@@ -136,23 +135,12 @@
             label3.TabIndex = 13;
             label3.Text = "Eliminar";
             // 
-            // LabelTitulo
-            // 
-            LabelTitulo.AutoSize = true;
-            LabelTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitulo.Location = new Point(285, 9);
-            LabelTitulo.Name = "LabelTitulo";
-            LabelTitulo.Size = new Size(21, 30);
-            LabelTitulo.TabIndex = 14;
-            LabelTitulo.Text = "-";
-            // 
             // SecondMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightGreen;
+            BackColor = Color.Wheat;
             ClientSize = new Size(800, 450);
-            Controls.Add(LabelTitulo);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -177,6 +165,5 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label LabelTitulo;
     }
 }

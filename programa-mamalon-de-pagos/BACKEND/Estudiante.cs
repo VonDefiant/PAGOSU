@@ -9,10 +9,9 @@ namespace programa_mamalon_de_pagos
 {
     public class Estudiante
     {
-        // Propiedades(Puede que falte alguna, pero estas serian las mas importantes)
-        public int Carnet { get; set; }
+        // Propiedades
+        public int Carnet { get; private set; }
         public string NombreCompleto { get; set; }
-
         public string CarreraGrado { get; set; }
         public string Seccion { get; set; }
         public string CorreoElectronico { get; set; }
@@ -21,11 +20,9 @@ namespace programa_mamalon_de_pagos
         public string Facultad { get; set; }
         public string Jornada { get; set; }
 
-
         // Constructor
-        public Estudiante(int carnet, string nombrecompleto, string carreragrado, string seccion, string correoElectronico, string telefono, string institucion, string facultad, string jornada)
+        public Estudiante(string nombrecompleto, string carreragrado, string seccion, string correoElectronico, string telefono, string institucion, string facultad, string jornada)
         {
-            Carnet = carnet;
             NombreCompleto = nombrecompleto;
             CarreraGrado = carreragrado;
             Seccion = seccion;
@@ -33,37 +30,35 @@ namespace programa_mamalon_de_pagos
             Telefono = telefono;
             Institucion = institucion;
             Facultad = facultad;
-            Jornada = jornada;  
+            Jornada = jornada;
         }
+
         public void InsertarEstudiante()
         {
-            string connectionString = "Data Source = C:/Users/fg144/OneDrive/Escritorio/PAGOSU/programa-mamalon-de-pagos/BACKEND/EXACTUS.db; Version = 3; ";
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
             {
                 connection.Open();
 
-
-                string checkCarnetQuery = "SELECT COUNT(*) FROM Estudiantes WHERE Carnet = @Carnet;";
-                using (SQLiteCommand checkCarnetCmd = new SQLiteCommand(checkCarnetQuery, connection))
+                string queryLastCarnet = "SELECT MAX(Carnet) FROM Estudiantes;";
+                using (SQLiteCommand cmdLastCarnet = new SQLiteCommand(queryLastCarnet, connection))
                 {
-                    checkCarnetCmd.Parameters.AddWithValue("@Carnet", Carnet);
-                    int count = Convert.ToInt32(checkCarnetCmd.ExecuteScalar());
-
-                    if (count > 0)
+                    var result = cmdLastCarnet.ExecuteScalar();
+                    if (result != DBNull.Value)
                     {
-                        throw new Exception("El carnet ya existe en la base de datos.");
+                        Carnet = Convert.ToInt32(result) + 1;
+                    }
+                    else
+                    {
+                        Carnet = 1;
                     }
                 }
-
-                string formattedCarnet = $"{Carnet / 1000000:0000}-{(Carnet / 10000) % 100:00}-{Carnet % 10000:0000}";
 
                 string insertQuery = "INSERT INTO Estudiantes (Carnet, NombreCompleto, CarreraGrado, Seccion, CorreoElectronico, Telefono, Institucion, Facultad, Jornada) " +
                                     "VALUES (@Carnet, @NombreCompleto, @CarreraGrado, @Seccion, @CorreoElectronico, @Telefono, @Institucion, @Facultad, @Jornada);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
                 {
-                    cmd.Parameters.AddWithValue("@Carnet", formattedCarnet);
+                    cmd.Parameters.AddWithValue("@Carnet", Carnet);
                     cmd.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
                     cmd.Parameters.AddWithValue("@CarreraGrado", CarreraGrado);
                     cmd.Parameters.AddWithValue("@Seccion", Seccion);
@@ -77,7 +72,6 @@ namespace programa_mamalon_de_pagos
                 }
             }
         }
-
 
         //Metodo para actualizar la info
         public void ActualizarEstudiante()
