@@ -1,4 +1,4 @@
-﻿namespace programa_mamalon_de_pagos.FRONTEND
+namespace programa_mamalon_de_pagos.FRONTEND
 {
     partial class crearcurso
     {
