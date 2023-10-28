@@ -74,7 +74,6 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 string facultadSeleccionada = CbFacultad.SelectedItem.ToString();
 
 
-                MessageBox.Show("Facultad seleccionada: " + facultadSeleccionada);
             }
             else
             {
@@ -84,42 +83,34 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void cbjornada_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbjornada.SelectedIndex >= 0)
+            {
+                string jornadaSeleccionada = cbjornada.SelectedItem.ToString();
 
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una Jornada válida.");
+            }
         }
 
         private void crearestudiante_Load_1(object sender, EventArgs e)
         {
             CargarFacultadesEnComboBox();
             CargarInstitucionEnComboBox();
+            CargarJornadasEnComboBox();
         }
 
         private void Cbinstitucion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (Cbinstitucion.SelectedIndex >= 0)
             {
-                // Conecta a la base de datos y obtiene los nombres de las facultades
-                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
-                string selectQuery = "SELECT Nombre FROM Instituciones";
+                string institucionSeleccionada = Cbinstitucion.SelectedItem.ToString();
 
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
-                    {
-                        using (SQLiteDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Cbinstitucion.Items.Add(reader["Nombre"].ToString());
-                            }
-                        }
-                    }
-                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error al cargar las Instituciones: " + ex.Message);
+                MessageBox.Show("Por favor, selecciona una Institucion válida.");
             }
 
         }
@@ -230,7 +221,35 @@ namespace programa_mamalon_de_pagos.FRONTEND
             }
         }
 
+        private void CargarJornadasEnComboBox()
+        {
+            try
+            {
+                // Conecta a la base de datos y obtiene los nombres de las facultades
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT Nombre FROM Jornadas";
 
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cbjornada.Items.Add(reader["Nombre"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las facultades: " + ex.Message);
+            }
+        }
 
     }
 }
