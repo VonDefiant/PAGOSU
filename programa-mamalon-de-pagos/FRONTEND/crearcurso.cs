@@ -104,7 +104,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
             {
                 string facultadSeleccionada = comboBox1.SelectedItem.ToString();
 
-  
+
                 MessageBox.Show("Facultad seleccionada: " + facultadSeleccionada);
             }
             else
