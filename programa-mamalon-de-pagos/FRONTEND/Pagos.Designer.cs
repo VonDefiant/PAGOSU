@@ -29,82 +29,127 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pagos));
-            button1 = new Button();
+            btnAgregar = new Button();
             label1 = new Label();
-            listBox1 = new ListBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            txtMonto = new TextBox();
+            PagosCB = new ComboBox();
+            CarnetCB = new ComboBox();
+            label3 = new Label();
+            labelfecha = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // btnAgregar
             // 
-            button1.Location = new Point(53, 258);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnAgregar.Location = new Point(47, 235);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(109, 41);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar Pago";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(53, 46);
+            label1.Location = new Point(47, 80);
             label1.Name = "label1";
             label1.Size = new Size(125, 20);
             label1.TabIndex = 1;
             label1.Text = "Método de pago:";
             // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
-            listBox1.Items.AddRange(new object[] { "Seleccione un método de pago:", "Efectivo", "Tarjeta de debito ", "Tarjeta de credito" });
-            listBox1.Location = new Point(184, 42);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(239, 24);
-            listBox1.TabIndex = 2;
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(53, 86);
+            label2.Location = new Point(47, 182);
             label2.Name = "label2";
             label2.Size = new Size(127, 20);
             label2.TabIndex = 3;
             label2.Text = "Cantidad a pagar:";
-            label2.Click += label2_Click;
             // 
-            // textBox2
+            // txtMonto
             // 
-            textBox2.Location = new Point(186, 79);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(239, 27);
-            textBox2.TabIndex = 5;
+            txtMonto.Location = new Point(202, 179);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(239, 27);
+            txtMonto.TabIndex = 5;
+            // 
+            // PagosCB
+            // 
+            PagosCB.FormattingEnabled = true;
+            PagosCB.Location = new Point(202, 80);
+            PagosCB.Name = "PagosCB";
+            PagosCB.Size = new Size(239, 28);
+            PagosCB.TabIndex = 7;
+            // 
+            // CarnetCB
+            // 
+            CarnetCB.FormattingEnabled = true;
+            CarnetCB.Location = new Point(202, 129);
+            CarnetCB.Name = "CarnetCB";
+            CarnetCB.Size = new Size(239, 28);
+            CarnetCB.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(47, 129);
+            label3.Name = "label3";
+            label3.Size = new Size(149, 20);
+            label3.TabIndex = 8;
+            label3.Text = "Carnet de estudiante:";
+            // 
+            // labelfecha
+            // 
+            labelfecha.AutoSize = true;
+            labelfecha.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelfecha.Location = new Point(47, 35);
+            labelfecha.Name = "labelfecha";
+            labelfecha.Size = new Size(51, 20);
+            labelfecha.TabIndex = 11;
+            labelfecha.Text = "label4";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(47, 35);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 20);
+            label4.TabIndex = 12;
             // 
             // Pagos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(1208, 731);
-            Controls.Add(textBox2);
+            ClientSize = new Size(456, 296);
+            Controls.Add(label4);
+            Controls.Add(labelfecha);
+            Controls.Add(CarnetCB);
+            Controls.Add(label3);
+            Controls.Add(PagosCB);
+            Controls.Add(txtMonto);
             Controls.Add(label2);
-            Controls.Add(listBox1);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(btnAgregar);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Pagos";
-            Text = "Pagos";
+            Text = "Agregar Pago";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
+        private Button btnAgregar;
         private Label label1;
-        private ListBox listBox1;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtMonto;
+        private ComboBox PagosCB;
+        private ComboBox CarnetCB;
+        private Label label3;
+        private Label labelfecha;
+        private Label label4;
     }
 }

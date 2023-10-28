@@ -11,7 +11,7 @@ namespace programa_mamalon_de_pagos.BACKEND
     public class Pagos
     {
         public int IdPago { get; set; }
-zpublic DateTime Fecha {  get; set; }
+        public DateTime Fecha {  get; set; }
         public int Carnet {  get; set; }
         public decimal Monto { get; set; }
         public Grado_Periodo GradoPeriodo { get; set;}

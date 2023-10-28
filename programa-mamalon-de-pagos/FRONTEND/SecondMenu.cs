@@ -99,6 +99,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 case ContextoMenu.Cursos:
                     AbrirFormulario(new crearcurso());
                     break;
+                case ContextoMenu.RealizarPagos:
+                    AbrirFormulario(new Pagos());
+                    break;
                     // Agrega más casos para otros contextos si es necesario
             }
         }
