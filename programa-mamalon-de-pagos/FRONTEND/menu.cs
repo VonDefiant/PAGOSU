@@ -87,7 +87,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void PAGOSBT_Click(object sender, EventArgs e)
         {
-            Pagos formularioPagos = new Pagos();
+            Realizarpagos formularioPagos = new Realizarpagos();
             formularioPagos.ShowDialog();
         }
 
