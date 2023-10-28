@@ -102,5 +102,12 @@ namespace programa_mamalon_de_pagos.FRONTEND
             SecondMenu formularioSecondMenu = new SecondMenu(SecondMenu.ContextoMenu.Reportes);
             formularioSecondMenu.ShowDialog();
         }
+
+        private void PAGOSCONSULTABT_Click(object sender, EventArgs e)
+        {
+            Recibos frmrecibos = new Recibos();
+            this.Hide();
+            frmrecibos.Show();
+        }
     }
 }
