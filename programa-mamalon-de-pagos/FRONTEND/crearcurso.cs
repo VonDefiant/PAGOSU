@@ -1,4 +1,4 @@
-﻿using programa_mamalon_de_pagos.BACKEND;
+using programa_mamalon_de_pagos.BACKEND;
 using System;
 using System.Data;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
             // Conecta a la base de datos y obtiene los datos de los cursos
             string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
-            string selectQuery = "SELECT NombreCurso, Descripcion FROM Cursos";
+            string selectQuery = "SELECT NombreCurso, IDCurso FROM Cursos";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
