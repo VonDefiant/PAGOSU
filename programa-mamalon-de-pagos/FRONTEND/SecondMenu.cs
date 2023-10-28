@@ -88,7 +88,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     AbrirFormulario(new crearinstitución());
                     break;
                 case ContextoMenu.Facultad:
-                    //AbrirFormulario(new FormularioFacultad());
+                    AbrirFormulario(new crearfacultad());
                     break;
                 case ContextoMenu.Estudiantes:
                     AbrirFormulario(new crearestudiante());

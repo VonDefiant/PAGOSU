@@ -13,14 +13,14 @@ namespace programa_mamalon_de_pagos.BACKEND
         // Propiedades
         public int IDCurso { get; set; }
         public string NombreCurso { get; set; }
-        public string Descripcion { get; set; }
+        public string Facultad { get; set; }
 
         // Constructor
-        public Curso( string nombreCurso, string descripcion)
+        public Curso( string nombreCurso, string facultad)
         {
 
             NombreCurso = nombreCurso;
-            Descripcion = descripcion;
+            Facultad = facultad;
         }
         public void InsertarCurso()
         {
@@ -42,14 +42,14 @@ namespace programa_mamalon_de_pagos.BACKEND
                     }
                 }
 
-                string insertQuery = "INSERT INTO Cursos (IDCurso, NombreCurso, Descripcion) " +
-                                    "VALUES (@IDCurso, @NombreCurso, @Descripcion);";
+                string insertQuery = "INSERT INTO Cursos (IDCurso, NombreCurso, Facultad) " +
+                                    "VALUES (@IDCurso, @NombreCurso, @Facultad);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@IDCurso", IDCurso);
                     cmd.Parameters.AddWithValue("@NombreCurso", NombreCurso);
-                    cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
+                    cmd.Parameters.AddWithValue("@Facultad", Facultad);
 
 
                     cmd.ExecuteNonQuery();
@@ -57,10 +57,10 @@ namespace programa_mamalon_de_pagos.BACKEND
             }
         }
         // Método para actualizar información
-        public void ActualizarInformacion(string nuevoNombre, string nuevaDescripcion)
+        public void ActualizarInformacion(string nuevoNombre, string nuevaFacultad)
         {
             NombreCurso = nuevoNombre;
-            Descripcion = nuevaDescripcion;
+            Facultad = nuevaFacultad;
         }
     }
 }

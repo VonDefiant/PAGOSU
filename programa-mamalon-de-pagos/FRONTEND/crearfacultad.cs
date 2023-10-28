@@ -11,14 +11,19 @@ using System.Windows.Forms;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
-    public partial class crearinstitución : Form
+    public partial class crearfacultad : Form
     {
-        public crearinstitución()
+        public crearfacultad()
         {
             InitializeComponent();
         }
 
-        private void crearinstitución_Load(object sender, EventArgs e)
+        private void txnombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crearfacultad_Load(object sender, EventArgs e)
         {
 
         }
@@ -30,14 +35,14 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 // Recopila los datos ingresados por el usuario desde los controls del formulario
                 string nombre = txnombre.Text;
 
- 
-                Institucion institucion = new Institucion(0, nombre); 
+                // Create an instance of the Institucion class with the provided data
+                Facultades facultades = new Facultades(0, nombre); 
 
-
-                institucion.InsertarInstitucion();
+                // Call the InsertarInstitucion method on the instance to save the data to the database
+                facultades.InsertarFacultad();
 
                 // Muestra un mensaje de éxito
-                MessageBox.Show("Institución creada exitosamente.");
+                MessageBox.Show("Facultad creada exitosamente.");
 
                 // Limpia los controles del formulario después de guardar
                 LimpiarControles();
@@ -45,20 +50,16 @@ namespace programa_mamalon_de_pagos.FRONTEND
             catch (Exception ex)
             {
                 // Handle exceptions, e.g., display an error message or log the exception.
-                MessageBox.Show("Error al crear la institución: " + ex.Message);
+                MessageBox.Show("Error al crear la facultad: " + ex.Message);
             }
         }
-
-        private void txnombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LimpiarControles()
         {
             // Este método limpia todos los controles del formulario
             txnombre.Text = "";
 
         }
+
+
     }
 }

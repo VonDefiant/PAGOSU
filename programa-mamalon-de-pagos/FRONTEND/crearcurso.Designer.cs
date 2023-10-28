@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crearcurso));
             txtNombreCurso = new TextBox();
-            txtDescripcion = new TextBox();
             label2 = new Label();
             label3 = new Label();
             dgvAgregar = new DataGridView();
             btnAgregarCurso = new Button();
             label4 = new Label();
             pictureBox1 = new PictureBox();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvAgregar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -50,15 +50,6 @@
             txtNombreCurso.TabIndex = 1;
             txtNombreCurso.TextChanged += txtNombreCurso_TextChanged;
             // 
-            // txtDescripcion
-            // 
-            txtDescripcion.Location = new Point(14, 153);
-            txtDescripcion.Margin = new Padding(3, 4, 3, 4);
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(470, 27);
-            txtDescripcion.TabIndex = 2;
-            txtDescripcion.TextChanged += txtDescripcion_TextChanged;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -71,11 +62,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(210, 129);
+            label3.Location = new Point(174, 129);
             label3.Name = "label3";
-            label3.Size = new Size(87, 20);
+            label3.Size = new Size(166, 20);
             label3.TabIndex = 7;
-            label3.Text = "Descripción";
+            label3.Text = "Seleccione una facultad";
             // 
             // dgvAgregar
             // 
@@ -123,18 +114,27 @@
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(14, 156);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(470, 28);
+            comboBox1.TabIndex = 14;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
             // crearcurso
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
             ClientSize = new Size(496, 647);
+            Controls.Add(comboBox1);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
             Controls.Add(btnAgregarCurso);
             Controls.Add(dgvAgregar);
             Controls.Add(label3);
-            Controls.Add(txtDescripcion);
             Controls.Add(txtNombreCurso);
             Controls.Add(label2);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -150,12 +150,12 @@
 
         #endregion
         private TextBox txtNombreCurso;
-        private TextBox txtDescripcion;
         private Label label2;
         private Label label3;
         private DataGridView dgvAgregar;
         private Button btnAgregarCurso;
         private Label label4;
         private PictureBox pictureBox1;
+        private ComboBox comboBox1;
     }
 }
