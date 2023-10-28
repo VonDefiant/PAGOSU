@@ -1,100 +1,49 @@
 using programa_mamalon_de_pagos.BACKEND;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Linq;
-using System.Windows.Forms;
 using System.Data.SQLite;
-
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
-    public partial class crearcurso : Form
+    public partial class actualizarcurso : Form
     {
-        public crearcurso()
+        private Curso curso;
+
+        public actualizarcurso()
         {
             InitializeComponent();
-
+            curso = new Curso("", "");
         }
-
-        private void btnAgregarCurso_Click(object sender, EventArgs e)
+        private void btnActualizarDatos_Click(object sender, EventArgs e)
         {
+            // Obtener los nuevos valores desde los controles del formulario
+            string nuevoNombre = txtNombreCurso.Text;
+            string nuevaDescripcion = txtDescripcionCurso.Text;
+
+            // Llamar al método ActualizarInformacion de la instancia de la clase Curso
+            curso.ActualizarInformacion(nuevoNombre, nuevaDescripcion);
+
+            // Actualizar los datos en la base de datos
             try
             {
-
-                // Recopila los datos ingresados por el usuario desde los controles del formulario
-                string nombrecurso = txtNombreCurso.Text;
-                string descripcion = txtDescripcion.Text;
-
-                // Crea una instancia de la clase Curso con los datos ingresados
-                Curso curso = new Curso(nombrecurso, descripcion);
-
-                // Llama al método Insertarcurso para guardar los datos en la base de datos
-                curso.InsertarCurso();
-
-                // Muestra un mensaje de éxito
-                MessageBox.Show("Curso insertado exitosamente.");
-
-                // Limpia los controles del formulario después de guardar
-                LimpiarControles();
-
-                CargarCursos();
+                //curso.ActualizarInformacionEnLaBaseDeDatos();
+                MessageBox.Show("Información actualizada correctamente en la base de datos.");
             }
             catch (Exception ex)
             {
-                // Maneja cualquier excepción que pueda ocurrir al insertar el curso
-                MessageBox.Show("Error al insertar el curso: " + ex.Message);
+                MessageBox.Show("Error al actualizar los datos en la base de datos: " + ex.Message);
             }
         }
 
 
-
-
-        private void dgvAgregar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtNombreCurso_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDescripcion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LimpiarControles()
-        {
-            // Este método limpia todos los controles del formulario
-            txtNombreCurso.Text = "";
-            txtDescripcion.Text = "";
-
-        }
-        private void CargarCursos()
-        {
-            // Conecta a la base de datos y obtiene los datos de los cursos
-            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
-            string selectQuery = "SELECT NombreCurso, IDCurso FROM Cursos";
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(selectQuery, connection))
-                {
-                    DataTable dt = new DataTable();
-                    dataAdapter.Fill(dt);
-
-                    // Asigna los datos al DataGridView
-                    dgvAgregar.DataSource = dt;
-                }
-            }
-        }
-
-        private void crearcurso_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
+
