@@ -16,6 +16,7 @@ namespace programa_mamalon_de_pagos.BACKEND
         public decimal Monto { get; set; }
         public Grado_Periodo GradoPeriodo { get; set; }
 
+
         public Pagos(int idPago, DateTime fecha, int carnet, decimal monto, Grado_Periodo gradoperiodo)
         {
             IdPago = idPago;
@@ -45,8 +46,8 @@ namespace programa_mamalon_de_pagos.BACKEND
                     }
                 }
 
-                string insertQuery = "INSERT INTO Pagos (IdPago, Fecha, Carnet, Monto, GradoPeriodo) " +
-                                    "VALUES (@IdPago, @Fecha, @Carnet, @Monto, @GradoPeriodo);";
+                string insertQuery = "INSERT INTO Pagos (IdPago, Fecha, Carnet, Monto, GradosPeriodo) " +
+                                    "VALUES (@IdPago, @Fecha, @Carnet, @Monto, @GradosPeriodo);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
                 {
@@ -54,7 +55,7 @@ namespace programa_mamalon_de_pagos.BACKEND
                     cmd.Parameters.AddWithValue("@Fecha", Fecha);
                     cmd.Parameters.AddWithValue("@Carnet", Carnet);
                     cmd.Parameters.AddWithValue("@Monto", Monto);
-                    cmd.Parameters.AddWithValue("@GradoPeriodo", GradoPeriodo);
+                    cmd.Parameters.AddWithValue("@GradosPeriodo", GradoPeriodo);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -71,7 +72,7 @@ namespace programa_mamalon_de_pagos.BACKEND
                 connection.Open();
 
                 string updateQuery = "UPDATE Pagos SET Fecha = @Fecha, Carnet = @Carnet, Monto = @Monto, " +
-                                    "GradoPeriodo = @GradoPeriodoW" +
+                                    "GradosPeriodo = @GradosPeriodoW" +
                                     "WHERE IdPago = @IdPago;";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
@@ -80,7 +81,7 @@ namespace programa_mamalon_de_pagos.BACKEND
                     cmd.Parameters.AddWithValue("@Fecha", Fecha);
                     cmd.Parameters.AddWithValue("@Carnet", Carnet);
                     cmd.Parameters.AddWithValue("@Monto", Monto);
-                    cmd.Parameters.AddWithValue("@GradoPeriodo", GradoPeriodo);
+                    cmd.Parameters.AddWithValue("@GradosPeriodo", GradoPeriodo);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -105,5 +106,10 @@ namespace programa_mamalon_de_pagos.BACKEND
                 }
             }
         }
+
+
+
+
+
     }
 }

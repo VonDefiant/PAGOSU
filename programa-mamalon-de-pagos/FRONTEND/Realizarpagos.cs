@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using programa_mamalon_de_pagos.BACKEND;
 using System.Data.SQLite;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
@@ -71,13 +72,17 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     MessageBox.Show("El carnet no existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                DateTime fecha = dateTimePicker1.Value;
+
+                string gradoPeriodo = cmperiodo.SelectedItem as string;
 
                 // Insertar los datos en la base de datos SQLite
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
+                    string insertDataQuery = "INSERT INTO Pagos (Monto, TipoPago, NumeroCuenta, Carnet, Fecha, GradosPeriodos) " +
+                                              "VALUES (@Monto, @TipoPago, @NumeroCuenta, @Carnet, @Fecha, @GradosPeriodos);";
 
-                    string insertDataQuery = "INSERT INTO Pagos (Monto, TipoPago, NumeroCuenta, Carnet) VALUES (@Monto, @TipoPago, @NumeroCuenta, @Carnet);";
 
                     using (SQLiteCommand command = new SQLiteCommand(insertDataQuery, connection))
                     {
@@ -85,6 +90,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
                         command.Parameters.AddWithValue("@TipoPago", tipoPago);
                         command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
                         command.Parameters.AddWithValue("@Carnet", carnet);
+                        command.Parameters.AddWithValue("@Fecha", fecha.ToString("dd-MM-yyyy"));
+                        command.Parameters.AddWithValue("@GradosPeriodos", gradoPeriodo);
+
 
                         command.ExecuteNonQuery();
                     }
@@ -98,6 +106,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 txtNumeroCuenta.Clear();
                 PagosCB.SelectedIndex = -1; // Desseleccionar el ComboBox
                 txtcarnet.Clear();
+                cmperiodo.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -128,6 +137,59 @@ namespace programa_mamalon_de_pagos.FRONTEND
         private void txtcarnet_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmperiodo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmperiodo.SelectedIndex >= 0)
+            {
+                string gradoPeriodoSeleccionado = cmperiodo.SelectedItem.ToString();
+
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un periodo válida.");
+            }
+        }
+        private void CargarPeriodosEnComboBox()
+        {
+            try
+            {
+
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT Nombre FROM GradosPeriodos";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cmperiodo.Items.Add(reader["Nombre"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los Periodos: " + ex.Message);
+            }
+        }
+
+        private void Realizarpagos_Load(object sender, EventArgs e)
+        {
+            CargarPeriodosEnComboBox();
         }
     }
 }

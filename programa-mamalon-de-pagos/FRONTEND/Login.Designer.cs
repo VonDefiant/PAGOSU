@@ -101,6 +101,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Image = Properties.Resources.imagenlogin;
             pictureBox1.Location = new Point(292, 9);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
