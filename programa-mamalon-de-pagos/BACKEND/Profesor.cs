@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace programa_mamalon_de_pagos.BACKEND
 {
@@ -10,19 +8,16 @@ namespace programa_mamalon_de_pagos.BACKEND
     {
         // Propiedades
         public int IDProfesor { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public string NombreCompleto { get; set; }
         public string Direccion { get; set; }
         public string CorreoElectronico { get; set; }
         public string Telefono { get; set; }
         public List<string> Asignaturas { get; set; }
 
         // Constructor
-        public Profesor(int idProfesor, string nombre, string apellido, string direccion, string correoElectronico, string telefono)
+        public Profesor(string nombreCompleto, string direccion, string correoElectronico, string telefono)
         {
-            IDProfesor = idProfesor;
-            Nombre = nombre;
-            Apellido = apellido;
+            NombreCompleto = nombreCompleto;
             Direccion = direccion;
             CorreoElectronico = correoElectronico;
             Telefono = telefono;
@@ -41,27 +36,88 @@ namespace programa_mamalon_de_pagos.BACKEND
             return Asignaturas;
         }
 
-        // Método para obtener información del profesor
-        public string ObtenerInformacion()
+        // Método para insertar un profesor en la base de datos
+        public void InsertarDocente()
         {
-            return $"ID: {IDProfesor}, Nombre: {Nombre} {Apellido}, Dirección: {Direccion}, Correo Electrónico: {CorreoElectronico}, Teléfono: {Telefono}";
+            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
+            {
+                connection.Open();
+
+                string queryLastIDProfesor = "SELECT MAX(IDProfesor) FROM Docentes;";
+                using (SQLiteCommand cmdLastIDProfesor = new SQLiteCommand(queryLastIDProfesor, connection))
+                {
+                    var result = cmdLastIDProfesor.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        IDProfesor = Convert.ToInt32(result) + 1;
+                    }
+                    else
+                    {
+                        IDProfesor = 1;
+                    }
+                }
+
+                string insertQuery = "INSERT INTO Docentes (IDProfesor, NombreCompleto, Direccion, CorreoElectronico, Telefono, Asignaturas) " +
+                                    "VALUES (@IDProfesor, @NombreCompleto, @Direccion, @CorreoElectronico, @Telefono, @Asignaturas);";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDProfesor", IDProfesor);
+                    cmd.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
+                    cmd.Parameters.AddWithValue("@Direccion", Direccion);
+                    cmd.Parameters.AddWithValue("@CorreoElectronico", CorreoElectronico);
+                    cmd.Parameters.AddWithValue("@Telefono", Telefono);
+                    cmd.Parameters.AddWithValue("@Asignaturas", string.Join(",", Asignaturas));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-        // Método para actualizar información del profesor
-        public void ActualizarInformacion(string nuevoNombre, string nuevoApellido, string nuevaDireccion, string nuevoCorreo, string nuevoTelefono)
+        // Método para actualizar la información de un profesor en la base de datos
+        public void ActualizarDocente()
         {
-            Nombre = nuevoNombre;
-            Apellido = nuevoApellido;
-            Direccion = nuevaDireccion;
-            CorreoElectronico = nuevoCorreo;
-            Telefono = nuevoTelefono;
+            string connectionString = "Data Source=BACKEND/EXACTUS.db;Version=3;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Docentes SET NombreCompleto = @NombreCompleto, Direccion = @Direccion, CorreoElectronico = @CorreoElectronico, " +
+                                    "Telefono = @Telefono, Asignaturas = @Asignaturas " +
+                                    "WHERE IDProfesor = @IDProfesor;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDProfesor", IDProfesor);
+                    cmd.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
+                    cmd.Parameters.AddWithValue("@Direccion", Direccion);
+                    cmd.Parameters.AddWithValue("@CorreoElectronico", CorreoElectronico);
+                    cmd.Parameters.AddWithValue("@Telefono", Telefono);
+                    cmd.Parameters.AddWithValue("@Asignaturas", string.Join(",", Asignaturas));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-        // Método para eliminar al profesor (Este metodo va relacionado a la base de datos)
-        public void EliminarProfesor()
+        // Método para eliminar un profesor de la base de datos
+        public void EliminarDocente()
         {
-            // Implementa la lógica para eliminar un profesor de la base de datos.
-            // Por ejemplo: BaseDeDatos.EliminarProfesor(IDProfesor);
+            string connectionString = "Data Source=BACKEND/EXACTUS.db;Version=3;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Docentes WHERE IDProfesor = @IDProfesor;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDProfesor", IDProfesor);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -36,15 +36,17 @@
             USERBOX = new TextBox();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            Fredyfasber_studios = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // CONTRASEÑABOX
             // 
-            CONTRASEÑABOX.Location = new Point(301, 297);
+            CONTRASEÑABOX.Location = new Point(263, 223);
+            CONTRASEÑABOX.Margin = new Padding(3, 2, 3, 2);
             CONTRASEÑABOX.Name = "CONTRASEÑABOX";
-            CONTRASEÑABOX.Size = new Size(224, 27);
+            CONTRASEÑABOX.Size = new Size(196, 23);
             CONTRASEÑABOX.TabIndex = 0;
             CONTRASEÑABOX.TextChanged += textBox1_TextChanged;
             // 
@@ -53,9 +55,10 @@
             BONTONINGRESO.BackColor = SystemColors.Highlight;
             BONTONINGRESO.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             BONTONINGRESO.ForeColor = SystemColors.ButtonFace;
-            BONTONINGRESO.Location = new Point(345, 358);
+            BONTONINGRESO.Location = new Point(302, 268);
+            BONTONINGRESO.Margin = new Padding(3, 2, 3, 2);
             BONTONINGRESO.Name = "BONTONINGRESO";
-            BONTONINGRESO.Size = new Size(134, 47);
+            BONTONINGRESO.Size = new Size(117, 35);
             BONTONINGRESO.TabIndex = 1;
             BONTONINGRESO.Text = "INGRESAR";
             BONTONINGRESO.UseVisualStyleBackColor = false;
@@ -66,9 +69,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(309, 256);
+            label1.Location = new Point(270, 192);
             label1.Name = "label1";
-            label1.Size = new Size(204, 38);
+            label1.Size = new Size(159, 30);
             label1.TabIndex = 2;
             label1.Text = "CONTRASEÑA";
             label1.Click += label1_Click;
@@ -78,18 +81,19 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(346, 185);
+            label2.Location = new Point(303, 139);
             label2.Name = "label2";
-            label2.Size = new Size(140, 38);
+            label2.Size = new Size(110, 30);
             label2.TabIndex = 3;
             label2.Text = "USUARIO";
             label2.Click += label2_Click;
             // 
             // USERBOX
             // 
-            USERBOX.Location = new Point(301, 226);
+            USERBOX.Location = new Point(263, 170);
+            USERBOX.Margin = new Padding(3, 2, 3, 2);
             USERBOX.Name = "USERBOX";
-            USERBOX.Size = new Size(224, 27);
+            USERBOX.Size = new Size(196, 23);
             USERBOX.TabIndex = 4;
             USERBOX.TextChanged += USERBOX_TextChanged;
             // 
@@ -98,9 +102,10 @@
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = Properties.Resources.imagenlogin;
-            pictureBox1.Location = new Point(334, 12);
+            pictureBox1.Location = new Point(292, 9);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(162, 170);
+            pictureBox1.Size = new Size(142, 128);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -108,18 +113,31 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(Fredyfasber_studios);
             panel1.Controls.Add(BONTONINGRESO);
-            panel1.Location = new Point(1, 3);
+            panel1.Location = new Point(1, 2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(802, 449);
+            panel1.Size = new Size(702, 337);
             panel1.TabIndex = 6;
+            // 
+            // Fredyfasber_studios
+            // 
+            Fredyfasber_studios.AutoSize = true;
+            Fredyfasber_studios.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            Fredyfasber_studios.ForeColor = SystemColors.Control;
+            Fredyfasber_studios.Location = new Point(0, 322);
+            Fredyfasber_studios.Name = "Fredyfasber_studios";
+            Fredyfasber_studios.Size = new Size(117, 15);
+            Fredyfasber_studios.TabIndex = 2;
+            Fredyfasber_studios.Text = "Fredyfasber_studios";
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(pictureBox1);
             Controls.Add(USERBOX);
             Controls.Add(label2);
@@ -127,11 +145,13 @@
             Controls.Add(CONTRASEÑABOX);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Login";
             Text = "LOGIN";
             Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,5 +165,6 @@
         private TextBox USERBOX;
         private PictureBox pictureBox1;
         private Panel panel1;
+        private Label Fredyfasber_studios;
     }
 }

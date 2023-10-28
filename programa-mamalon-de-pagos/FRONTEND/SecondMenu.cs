@@ -37,47 +37,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
             InitializeComponent();
             this.contexto = contexto;
-            this.FormClosed += SecondMenu_FormClosed; // Suscribir al evento FormClosed
-
-            // Cambiar el texto del LabelTitulo según el contexto
-            /*switch (contexto)
-              switch (contexto)
-              {
-                  case ContextoMenu.Institucion:
-                      LabelTitulo.Text = "Gestión de Instituciones";
-                      break;
-                  case ContextoMenu.Facultad:
-                      LabelTitulo.Text = "Gestión de Facultades";
-                      break;
-                  case ContextoMenu.Estudiantes:
-                      LabelTitulo.Text = "Gestión de Estudiantes";
-                      break;
-                  case ContextoMenu.Docentes:
-                      LabelTitulo.Text = "Gestión de Docentes";
-                      break;
-                  case ContextoMenu.Cursos:
-                      LabelTitulo.Text = "Gestión de Cursos";
-                      break;
-                  case ContextoMenu.Secciones:
-                      LabelTitulo.Text = "Gestión de Secciones";
-                      break;
-                  case ContextoMenu.RealizarPagos:
-                      LabelTitulo.Text = "Gestión de Pagos";
-                      break;
-                  case ContextoMenu.Periodo:
-                      LabelTitulo.Text = "Gestión de Períodos";
-                      break;
-                  case ContextoMenu.Reportes:
-                      LabelTitulo.Text = "Gestión de Reportes";
-                      break;
-                  case ContextoMenu.Consultas:
-                      LabelTitulo.Text = "Gestión de Consultas";
-                      break;
-                  default:
-                      LabelTitulo.Text = "Título por defecto";
-                      break;
-              }
-          /**/
+            this.FormClosed += SecondMenu_FormClosed; 
         }
 
         private void ButtonAgregar_Click(object sender, EventArgs e)
@@ -95,7 +55,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     AbrirFormulario(new crearestudiante());
                     break;
                 case ContextoMenu.Docentes:
-                    //AbrirFormulario(new FormularioDocentes());
+                    AbrirFormulario(new crearprofesor());
                     break;
                 case ContextoMenu.Cursos:
                     AbrirFormulario(new crearcurso());
@@ -135,13 +95,13 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void ButtonRegresar_Click(object sender, EventArgs e)
         {
-            // Botón "Regresar": Cierra el formulario actual y regresa al formulario anterior (menú principal)
+
             this.Close();
         }
 
         private void ButtonSalir_Click(object sender, EventArgs e)
         {
-            // Botón "Salir": Cierra la aplicación completamente
+
             Application.Exit();
         }
 
