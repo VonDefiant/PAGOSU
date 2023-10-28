@@ -99,8 +99,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void REPORTESBT_Click(object sender, EventArgs e)
         {
-            SecondMenu formularioSecondMenu = new SecondMenu(SecondMenu.ContextoMenu.Reportes);
-            formularioSecondMenu.ShowDialog();
+            menureportes frmmenureportes = new menureportes();
+            this.Hide();
+            frmmenureportes.Show();
         }
     }
 }

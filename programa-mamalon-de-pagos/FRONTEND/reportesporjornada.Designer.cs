@@ -1,6 +1,6 @@
 ﻿namespace programa_mamalon_de_pagos.FRONTEND
 {
-    partial class reportes
+    partial class reportesporjornada
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reportes));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reportesporjornada));
             CMBJORNADA = new ComboBox();
             dataGridView1 = new DataGridView();
             label1 = new Label();

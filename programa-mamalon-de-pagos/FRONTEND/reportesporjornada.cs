@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
-    public partial class reportes : Form
+    public partial class reportesporjornada : Form
     {
-        public reportes()
+        public reportesporjornada()
         {
             InitializeComponent();
             CargarJornadasEnComboBox();
