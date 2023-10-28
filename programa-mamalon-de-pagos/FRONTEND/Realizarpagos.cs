@@ -112,7 +112,10 @@ namespace programa_mamalon_de_pagos.FRONTEND
             {
                 // Manejar cualquier excepción que ocurra durante el proceso
                 MessageBox.Show("Error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
+ 
+
         }
 
         // Método para verificar si un carnet existe en la base de datos SQLite

@@ -33,7 +33,6 @@
             button2 = new Button();
             ESTUDIANTEBT = new Button();
             DOCENTEBT = new Button();
-            RECIBOSBT = new Button();
             SECCIONESBT = new Button();
             CURSOSBT = new Button();
             REPORTESBT = new Button();
@@ -44,7 +43,6 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             label10 = new Label();
             label11 = new Label();
             SuspendLayout();
@@ -113,18 +111,6 @@
             DOCENTEBT.UseVisualStyleBackColor = true;
             DOCENTEBT.Click += button4_Click;
             // 
-            // RECIBOSBT
-            // 
-            RECIBOSBT.BackgroundImage = Properties.Resources.recibo;
-            RECIBOSBT.BackgroundImageLayout = ImageLayout.Zoom;
-            RECIBOSBT.Location = new Point(654, 172);
-            RECIBOSBT.Margin = new Padding(3, 2, 3, 2);
-            RECIBOSBT.Name = "RECIBOSBT";
-            RECIBOSBT.Size = new Size(144, 108);
-            RECIBOSBT.TabIndex = 19;
-            RECIBOSBT.UseVisualStyleBackColor = true;
-            RECIBOSBT.Click += PERIODOBT_Click;
-            // 
             // SECCIONESBT
             // 
             SECCIONESBT.BackgroundImage = Properties.Resources.carrera_profesional1;
@@ -162,7 +148,7 @@
             // 
             REPORTESBT.BackgroundImage = Properties.Resources.reportes;
             REPORTESBT.BackgroundImageLayout = ImageLayout.Zoom;
-            REPORTESBT.Location = new Point(381, 328);
+            REPORTESBT.Location = new Point(654, 172);
             REPORTESBT.Margin = new Padding(3, 2, 3, 2);
             REPORTESBT.Name = "REPORTESBT";
             REPORTESBT.Size = new Size(144, 108);
@@ -251,16 +237,6 @@
             label6.TabIndex = 29;
             label6.Text = "INSTITUCIÓN";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(675, 282);
-            label7.Name = "label7";
-            label7.Size = new Size(109, 15);
-            label7.TabIndex = 30;
-            label7.Text = "RECIBO DE PAGOS";
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -275,7 +251,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(416, 438);
+            label11.Location = new Point(689, 282);
             label11.Name = "label11";
             label11.Size = new Size(65, 15);
             label11.TabIndex = 34;
@@ -286,10 +262,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(852, 482);
+            ClientSize = new Size(852, 329);
             Controls.Add(label11);
             Controls.Add(label10);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -298,7 +273,6 @@
             Controls.Add(label1);
             Controls.Add(REPORTESBT);
             Controls.Add(PAGOSBT);
-            Controls.Add(RECIBOSBT);
             Controls.Add(SECCIONESBT);
             Controls.Add(CURSOSBT);
             Controls.Add(DOCENTEBT);
@@ -319,7 +293,6 @@
         private Button button2;
         private Button ESTUDIANTEBT;
         private Button DOCENTEBT;
-        private Button RECIBOSBT;
         private Button SECCIONESBT;
         private Button CURSOSBT;
         private Button REPORTESBT;
@@ -331,7 +304,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
         private Label label10;
         private Label label11;
     }

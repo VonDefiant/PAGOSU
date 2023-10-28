@@ -114,7 +114,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(614, 433);
+            ClientSize = new Size(563, 433);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(ButtonSalir);
