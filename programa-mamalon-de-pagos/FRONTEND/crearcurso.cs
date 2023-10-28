@@ -23,7 +23,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
                 // Recopila los datos ingresados por el usuario desde los controles del formulario
                 string nombrecurso = txtNombreCurso.Text;
-                string descripcion = txtDescripcion.Text;
+                string descripcion = comboBox1.Text;
 
                 // Crea una instancia de la clase Curso con los datos ingresados
                 Curso curso = new Curso(nombrecurso, descripcion);
@@ -68,14 +68,14 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
             // Este método limpia todos los controles del formulario
             txtNombreCurso.Text = "";
-            txtDescripcion.Text = "";
+            comboBox1.Text = "";
 
         }
         private void CargarCursos()
         {
             // Conecta a la base de datos y obtiene los datos de los cursos
             string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
-            string selectQuery = "SELECT NombreCurso, IDCurso FROM Cursos";
+            string selectQuery = "SELECT IDCurso, NombreCurso, Facultad FROM Cursos";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -94,7 +94,59 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void crearcurso_Load(object sender, EventArgs e)
         {
+            CargarCursos();
+            CargarFacultadesEnComboBox();
+        }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex >= 0)
+            {
+                string facultadSeleccionada = comboBox1.SelectedItem.ToString();
+
+  
+                MessageBox.Show("Facultad seleccionada: " + facultadSeleccionada);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una facultad válida.");
+            }
+        }
+
+
+
+        private void CargarFacultadesEnComboBox()
+        {
+            try
+            {
+                // Conecta a la base de datos y obtiene los nombres de las facultades
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT Nombre FROM Facultades";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                comboBox1.Items.Add(reader["Nombre"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las facultades: " + ex.Message);
+            }
         }
     }
+
 }
+
+
+
