@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using programa_mamalon_de_pagos.BACKEND;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
@@ -68,7 +69,17 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void CbFacultad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (CbFacultad.SelectedIndex >= 0)
+            {
+                string facultadSeleccionada = CbFacultad.SelectedItem.ToString();
 
+
+                MessageBox.Show("Facultad seleccionada: " + facultadSeleccionada);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una facultad válida.");
+            }
         }
 
         private void cbjornada_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,7 +89,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void crearestudiante_Load_1(object sender, EventArgs e)
         {
-
+            CargarFacultadesEnComboBox();
         }
 
         private void Cbinstitucion_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,5 +142,38 @@ namespace programa_mamalon_de_pagos.FRONTEND
             }
 
         }
+        private void CargarFacultadesEnComboBox()
+        {
+            try
+            {
+                // Conecta a la base de datos y obtiene los nombres de las facultades
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT Nombre FROM Facultades";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                CbFacultad.Items.Add(reader["Nombre"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las facultades: " + ex.Message);
+            }
+        }
+
+
+
+
     }
 }
