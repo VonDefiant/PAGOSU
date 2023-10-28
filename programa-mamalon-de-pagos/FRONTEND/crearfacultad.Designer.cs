@@ -34,16 +34,18 @@
             label1 = new Label();
             txnombre = new TextBox();
             pictureBox1 = new PictureBox();
+            dgfacultad = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgfacultad).BeginInit();
             SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(192, 320);
+            label2.Location = new Point(168, 240);
             label2.Name = "label2";
-            label2.Size = new Size(104, 25);
+            label2.Size = new Size(84, 20);
             label2.TabIndex = 9;
             label2.Text = "GUARDAR";
             // 
@@ -52,9 +54,10 @@
             savebutton.BackColor = Color.Wheat;
             savebutton.BackgroundImage = Properties.Resources.salvar;
             savebutton.BackgroundImageLayout = ImageLayout.Zoom;
-            savebutton.Location = new Point(192, 216);
+            savebutton.Location = new Point(168, 162);
+            savebutton.Margin = new Padding(3, 2, 3, 2);
             savebutton.Name = "savebutton";
-            savebutton.Size = new Size(94, 84);
+            savebutton.Size = new Size(82, 63);
             savebutton.TabIndex = 8;
             savebutton.UseVisualStyleBackColor = false;
             savebutton.Click += savebutton_Click;
@@ -63,17 +66,18 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(60, 135);
+            label1.Location = new Point(52, 101);
             label1.Name = "label1";
-            label1.Size = new Size(357, 25);
+            label1.Size = new Size(285, 20);
             label1.TabIndex = 7;
             label1.Text = "INGRESE EL NOMBRE DE LA FACULTAD";
             // 
             // txnombre
             // 
-            txnombre.Location = new Point(35, 172);
+            txnombre.Location = new Point(31, 129);
+            txnombre.Margin = new Padding(3, 2, 3, 2);
             txnombre.Name = "txnombre";
-            txnombre.Size = new Size(409, 27);
+            txnombre.Size = new Size(358, 23);
             txnombre.TabIndex = 6;
             txnombre.TextChanged += txnombre_TextChanged;
             // 
@@ -81,28 +85,43 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.facultad;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(175, 30);
+            pictureBox1.Location = new Point(153, 22);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131, 102);
+            pictureBox1.Size = new Size(115, 76);
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
+            // dgfacultad
+            // 
+            dgfacultad.BackgroundColor = SystemColors.Control;
+            dgfacultad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgfacultad.Location = new Point(12, 274);
+            dgfacultad.Name = "dgfacultad";
+            dgfacultad.RowTemplate.Height = 25;
+            dgfacultad.Size = new Size(396, 255);
+            dgfacultad.TabIndex = 10;
+            dgfacultad.CellContentClick += dgfacultad_CellContentClick;
+            // 
             // crearfacultad
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(480, 373);
+            ClientSize = new Size(420, 541);
+            Controls.Add(dgfacultad);
             Controls.Add(label2);
             Controls.Add(savebutton);
             Controls.Add(label1);
             Controls.Add(txnombre);
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "crearfacultad";
             Text = "crear_facultad";
             Load += crearfacultad_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgfacultad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -114,5 +133,6 @@
         private Label label1;
         private TextBox txnombre;
         private PictureBox pictureBox1;
+        private DataGridView dgfacultad;
     }
 }
