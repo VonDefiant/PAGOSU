@@ -87,6 +87,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 case ContextoMenu.Periodo:
                     //  AbrirFormulario(new FormularioPeriodo());
                     break;
+
+                    break;
                     // Agrega más casos para otros contextos si es necesario
             }
         }
@@ -108,7 +110,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 case ContextoMenu.Estudiantes:
                      AbrirFormulario(new borraralumno());
                     break;
-
+                case ContextoMenu.Carrera:
+                    AbrirFormulario(new borrarcarrera());
+                    break;
                 default:
                     MessageBox.Show("Esta función no está disponible en el contexto actual.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
