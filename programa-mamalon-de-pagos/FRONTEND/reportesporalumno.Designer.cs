@@ -33,6 +33,7 @@
             label2 = new Label();
             dataGridView1 = new DataGridView();
             TXTCARNE = new TextBox();
+            BTNVerificarCarnet = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -73,12 +74,25 @@
             TXTCARNE.TabIndex = 3;
             TXTCARNE.TextChanged += TXTCARNE_TextChanged;
             // 
+            // BTNVerificarCarnet
+            // 
+            BTNVerificarCarnet.BackColor = Color.Wheat;
+            BTNVerificarCarnet.BackgroundImage = Properties.Resources.informacion1;
+            BTNVerificarCarnet.BackgroundImageLayout = ImageLayout.Zoom;
+            BTNVerificarCarnet.Location = new Point(658, 16);
+            BTNVerificarCarnet.Name = "BTNVerificarCarnet";
+            BTNVerificarCarnet.Size = new Size(83, 81);
+            BTNVerificarCarnet.TabIndex = 4;
+            BTNVerificarCarnet.UseVisualStyleBackColor = false;
+            BTNVerificarCarnet.Click += BTNVerificarCarnet_Click_1;
+            // 
             // reportesporalumno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
             ClientSize = new Size(800, 450);
+            Controls.Add(BTNVerificarCarnet);
             Controls.Add(TXTCARNE);
             Controls.Add(dataGridView1);
             Controls.Add(label2);
@@ -97,5 +111,6 @@
         private Label label2;
         private DataGridView dataGridView1;
         private TextBox TXTCARNE;
+        private Button BTNVerificarCarnet;
     }
 }

@@ -213,6 +213,16 @@ namespace programa_mamalon_de_pagos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap informacion1 {
+            get {
+                object obj = ResourceManager.GetObject("informacion1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap institucion {
             get {
                 object obj = ResourceManager.GetObject("institucion", resourceCulture);

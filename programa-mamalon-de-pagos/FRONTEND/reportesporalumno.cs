@@ -30,23 +30,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
 
         }
-        private void BTNVerificarCarnet_Click(object sender, EventArgs e)
-        {
-            // Obtener el carnet ingresado por el usuario
-            string carnet = TXTCARNE.Text;
 
-            // Verificar si el carnet existe en la base de datos
-            if (VerificarCarnetExistente(carnet))
-            {
-                // Filtra los datos en el DataGridView por el carnet
-                FiltrarDatosPorCarnet(carnet);
-                MessageBox.Show("El carnet existe en la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("El carnet no existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void FiltrarDatosPorCarnet(string carnet)
         {
@@ -107,6 +91,25 @@ namespace programa_mamalon_de_pagos.FRONTEND
             }
 
             return carnetExistente;
+        }
+
+        private void BTNVerificarCarnet_Click_1(object sender, EventArgs e)
+        {
+            // Obtener el carnet ingresado por el usuario
+            string carnet = TXTCARNE.Text;
+
+            // Verificar si el carnet existe en la base de datos
+            if (VerificarCarnetExistente(carnet))
+            {
+                // Filtra los datos en el DataGridView por el carnet
+                FiltrarDatosPorCarnet(carnet);
+                MessageBox.Show("El carnet existe en la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("El carnet no existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
