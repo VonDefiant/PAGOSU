@@ -117,6 +117,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
                    AbrirFormulario(new borrarfacultad());
                     break;
                 default:
+                case ContextoMenu.Institucion:
+                    AbrirFormulario(new borrarinstitucion());
+                    break;
                     MessageBox.Show("Esta función no está disponible en el contexto actual.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
