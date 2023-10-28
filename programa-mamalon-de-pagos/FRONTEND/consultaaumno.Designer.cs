@@ -38,7 +38,6 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            dataGridView7 = new DataGridView();
             label8 = new Label();
             label9 = new Label();
             buscarboton = new Button();
@@ -50,8 +49,10 @@
             cmfacultad = new ComboBox();
             cminstitucion = new TextBox();
             txtcarreta = new TextBox();
+            chbcursos = new CheckedListBox();
+            BtnActualizar = new Button();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView7).BeginInit();
             SuspendLayout();
             // 
             // CARNECONSULTA
@@ -62,6 +63,7 @@
             CARNECONSULTA.TabIndex = 0;
             CARNECONSULTA.Text = "Ingrese Carné";
             CARNECONSULTA.TextAlign = HorizontalAlignment.Center;
+            CARNECONSULTA.TextChanged += CARNECONSULTA_TextChanged;
             // 
             // dataGridView3
             // 
@@ -73,6 +75,7 @@
             dataGridView3.RowTemplate.Height = 25;
             dataGridView3.Size = new Size(59, 22);
             dataGridView3.TabIndex = 3;
+            dataGridView3.CellContentClick += dataGridView3_CellContentClick;
             // 
             // label1
             // 
@@ -140,17 +143,6 @@
             label7.TabIndex = 14;
             label7.Text = "CURSOS ASIGNADOS";
             // 
-            // dataGridView7
-            // 
-            dataGridView7.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView7.Location = new Point(29, 229);
-            dataGridView7.Name = "dataGridView7";
-            dataGridView7.RowHeadersWidth = 51;
-            dataGridView7.RowTemplate.Height = 25;
-            dataGridView7.Size = new Size(452, 184);
-            dataGridView7.TabIndex = 13;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -174,16 +166,17 @@
             buscarboton.BackColor = Color.Wheat;
             buscarboton.BackgroundImage = Properties.Resources.informacion;
             buscarboton.BackgroundImageLayout = ImageLayout.Zoom;
-            buscarboton.Location = new Point(201, 418);
+            buscarboton.Location = new Point(79, 409);
             buscarboton.Name = "buscarboton";
             buscarboton.Size = new Size(92, 59);
             buscarboton.TabIndex = 19;
             buscarboton.UseVisualStyleBackColor = false;
+            buscarboton.Click += buscarboton_Click;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(221, 478);
+            label10.Location = new Point(99, 469);
             label10.Name = "label10";
             label10.Size = new Size(51, 15);
             label10.TabIndex = 20;
@@ -195,6 +188,7 @@
             TXTNOMBRECOMPLETO.Name = "TXTNOMBRECOMPLETO";
             TXTNOMBRECOMPLETO.Size = new Size(348, 23);
             TXTNOMBRECOMPLETO.TabIndex = 21;
+            TXTNOMBRECOMPLETO.TextChanged += TXTNOMBRECOMPLETO_TextChanged;
             // 
             // txtelefono
             // 
@@ -202,6 +196,7 @@
             txtelefono.Name = "txtelefono";
             txtelefono.Size = new Size(119, 23);
             txtelefono.TabIndex = 22;
+            txtelefono.TextChanged += txtelefono_TextChanged;
             // 
             // txtcorreo
             // 
@@ -209,6 +204,7 @@
             txtcorreo.Name = "txtcorreo";
             txtcorreo.Size = new Size(452, 23);
             txtcorreo.TabIndex = 23;
+            txtcorreo.TextChanged += txtcorreo_TextChanged;
             // 
             // textseccion
             // 
@@ -216,6 +212,7 @@
             textseccion.Name = "textseccion";
             textseccion.Size = new Size(56, 23);
             textseccion.TabIndex = 24;
+            textseccion.TextChanged += textseccion_TextChanged;
             // 
             // cmfacultad
             // 
@@ -224,6 +221,7 @@
             cmfacultad.Name = "cmfacultad";
             cmfacultad.Size = new Size(121, 23);
             cmfacultad.TabIndex = 25;
+            cmfacultad.SelectedIndexChanged += cmfacultad_SelectedIndexChanged;
             // 
             // cminstitucion
             // 
@@ -231,6 +229,7 @@
             cminstitucion.Name = "cminstitucion";
             cminstitucion.Size = new Size(198, 23);
             cminstitucion.TabIndex = 26;
+            cminstitucion.TextChanged += cminstitucion_TextChanged;
             // 
             // txtcarreta
             // 
@@ -238,6 +237,36 @@
             txtcarreta.Name = "txtcarreta";
             txtcarreta.Size = new Size(328, 23);
             txtcarreta.TabIndex = 27;
+            txtcarreta.TextChanged += txtcarreta_TextChanged;
+            // 
+            // chbcursos
+            // 
+            chbcursos.FormattingEnabled = true;
+            chbcursos.Location = new Point(12, 219);
+            chbcursos.Name = "chbcursos";
+            chbcursos.Size = new Size(501, 184);
+            chbcursos.TabIndex = 28;
+            chbcursos.SelectedIndexChanged += chbcursos_SelectedIndexChanged;
+            // 
+            // BtnActualizar
+            // 
+            BtnActualizar.BackgroundImage = Properties.Resources.procesamiento_de_datos;
+            BtnActualizar.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnActualizar.Location = new Point(271, 409);
+            BtnActualizar.Name = "BtnActualizar";
+            BtnActualizar.Size = new Size(74, 59);
+            BtnActualizar.TabIndex = 29;
+            BtnActualizar.UseVisualStyleBackColor = true;
+            BtnActualizar.Click += BtnActualizar_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(271, 471);
+            label11.Name = "label11";
+            label11.Size = new Size(76, 15);
+            label11.TabIndex = 30;
+            label11.Text = "ACTUALIZAR";
             // 
             // consultaaumno
             // 
@@ -245,6 +274,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
             ClientSize = new Size(525, 500);
+            Controls.Add(label11);
+            Controls.Add(BtnActualizar);
+            Controls.Add(chbcursos);
             Controls.Add(txtcarreta);
             Controls.Add(cminstitucion);
             Controls.Add(cmfacultad);
@@ -257,7 +289,6 @@
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(dataGridView7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -270,7 +301,6 @@
             Name = "consultaaumno";
             Text = "Estudiantes";
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -286,7 +316,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private DataGridView dataGridView7;
         private Label label8;
         private Label label9;
         private Button buscarboton;
@@ -298,5 +327,8 @@
         private ComboBox cmfacultad;
         private TextBox cminstitucion;
         private TextBox txtcarreta;
+        private CheckedListBox chbcursos;
+        private Button BtnActualizar;
+        private Label label11;
     }
 }
