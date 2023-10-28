@@ -29,8 +29,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
             Reportes,
             Consultas,
             Carrera,
-            borrarcurso
-
+            borrarcurso,
+            Alumno
         }
 
 
@@ -105,8 +105,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 case ContextoMenu.RealizarPagos:
                     // AbrirFormulario(new FormularioRealizarPagos());
                     break;
-                case ContextoMenu.Periodo:
-                    // AbrirFormulario(new FormularioPeriodo());
+                case ContextoMenu.Estudiantes:
+                     AbrirFormulario(new borraralumno());
                     break;
 
                 default:
