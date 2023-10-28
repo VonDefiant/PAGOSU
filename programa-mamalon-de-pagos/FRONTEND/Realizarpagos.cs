@@ -42,6 +42,13 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     return;
                 }
 
+                // Validar que se haya ingresado un carnet
+                if (string.IsNullOrWhiteSpace(txtcarnet.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese un carnet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Obtener el monto ingresado por el usuario
                 decimal monto = decimal.Parse(txtMonto.Text);
 
@@ -53,16 +60,16 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 if (tipoPago == "Transferencia" && !string.IsNullOrWhiteSpace(txtNumeroCuenta.Text))
                 {
                     numeroCuenta = txtNumeroCuenta.Text;
+                }
 
-                    // Obtener el carnet desde la base de datos SQLite
-                    string carnet = ObtenerCarnetDesdeSQLite(numeroCuenta);
-                    if (carnet == "Carnet no encontrado")
-                    {
-                        MessageBox.Show("Número de cuenta no asociado a ningún carnet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                // Obtener el carnet ingresado por el usuario
+                string carnet = txtcarnet.Text;
 
-                    // Puedes usar el valor de 'carnet' según tus necesidades
+                // Verificar si el carnet existe en la base de datos
+                if (!VerificarCarnetExistente(carnet))
+                {
+                    MessageBox.Show("El carnet no existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 // Insertar los datos en la base de datos SQLite
@@ -70,13 +77,14 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 {
                     connection.Open();
 
-                    string insertDataQuery = "INSERT INTO Pagos (Monto, TipoPago, NumeroCuenta) VALUES (@Monto, @TipoPago, @NumeroCuenta);";
+                    string insertDataQuery = "INSERT INTO Pagos (Monto, TipoPago, NumeroCuenta, Carnet) VALUES (@Monto, @TipoPago, @NumeroCuenta, @Carnet);";
 
                     using (SQLiteCommand command = new SQLiteCommand(insertDataQuery, connection))
                     {
                         command.Parameters.AddWithValue("@Monto", monto);
                         command.Parameters.AddWithValue("@TipoPago", tipoPago);
                         command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
+                        command.Parameters.AddWithValue("@Carnet", carnet);
 
                         command.ExecuteNonQuery();
                     }
@@ -89,36 +97,12 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 txtMonto.Clear();
                 txtNumeroCuenta.Clear();
                 PagosCB.SelectedIndex = -1; // Desseleccionar el ComboBox
+                txtcarnet.Clear();
             }
             catch (Exception ex)
             {
                 // Manejar cualquier excepción que ocurra durante el proceso
                 MessageBox.Show("Error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Método para obtener el carnet desde la base de datos SQLite
-        private string ObtenerCarnetDesdeSQLite(string numeroCuenta)
-        {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-
-                string obtenerCarnetQuery = "SELECT Carnet FROM Estudiantes WHERE NumeroCuenta = @NumeroCuenta;";
-                using (SQLiteCommand command = new SQLiteCommand(obtenerCarnetQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
-                    object result = command.ExecuteScalar();
-                    if (result != null)
-                    {
-                        return result.ToString();
-                    }
-                    else
-                    {
-                        // Manejar el caso en el que el número de cuenta no está asociado a ningún carnet
-                        return "Carnet no encontrado";
-                    }
-                }
             }
         }
 
@@ -135,13 +119,13 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     command.Parameters.AddWithValue("@Carnet", carnet);
                     int count = Convert.ToInt32(command.ExecuteScalar());
 
-                    // Si count es mayor que 0, significa que el carnet existe en la base de datos
+                    // Devolver true si el carnet existe en la base de datos, de lo contrario, devolver false
                     return count > 0;
                 }
             }
         }
 
-        private void txtcarnet_TextChanged(object sender, EventArgs e)
+        private void txtcarnet_TextChanged_1(object sender, EventArgs e)
         {
 
         }

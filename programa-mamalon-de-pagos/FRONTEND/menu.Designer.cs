@@ -346,7 +346,6 @@
         private Button ESTUDIANTEBT;
         private Button DOCENTEBT;
         private Button RECIBOSBT;
-        private Button JORNADABT;
         private Button SECCIONESBT;
         private Button CURSOSBT;
         private Button CONSULTASBT;
