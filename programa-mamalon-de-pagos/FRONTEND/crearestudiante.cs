@@ -90,12 +90,40 @@ namespace programa_mamalon_de_pagos.FRONTEND
         private void crearestudiante_Load_1(object sender, EventArgs e)
         {
             CargarFacultadesEnComboBox();
+            CargarInstitucionEnComboBox();
         }
 
         private void Cbinstitucion_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                // Conecta a la base de datos y obtiene los nombres de las facultades
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT Nombre FROM Instituciones";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Cbinstitucion.Items.Add(reader["Nombre"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las Instituciones: " + ex.Message);
+            }
 
         }
+
         private void LimpiarControles()
         {
             // Este método limpia todos los controles del formulario
@@ -172,6 +200,35 @@ namespace programa_mamalon_de_pagos.FRONTEND
             }
         }
 
+        private void CargarInstitucionEnComboBox()
+        {
+            try
+            {
+                // Conecta a la base de datos y obtiene los nombres de las facultades
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT Nombre FROM Instituciones";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Cbinstitucion.Items.Add(reader["Nombre"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las facultades: " + ex.Message);
+            }
+        }
 
 
 
