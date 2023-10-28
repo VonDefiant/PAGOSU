@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
-
+﻿using System.Data.SQLite;
 
 namespace programa_mamalon_de_pagos.BACKEND
 {
     public class Facultades
     {
-        // Propiedades
         public int IdFacultad { get; set; }
         public string Nombre { get; set; }
 
-        // Constructor con dos argumentos
         public Facultades(int idFacultad, string nombre)
         {
             IdFacultad = idFacultad;
             Nombre = nombre;
         }
 
+        // Método para Insertar una Facultad
         public void InsertarFacultad()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
@@ -28,9 +21,9 @@ namespace programa_mamalon_de_pagos.BACKEND
                 connection.Open();
 
                 string queryLastIdFacultad = "SELECT MAX(IDFacultad) FROM Facultades;";
-                using (SQLiteCommand cmdLastIdInstitucion = new SQLiteCommand(queryLastIdFacultad, connection))
+                using (SQLiteCommand cmdLastIdFacultad = new SQLiteCommand(queryLastIdFacultad, connection))
                 {
-                    var result = cmdLastIdInstitucion.ExecuteScalar();
+                    var result = cmdLastIdFacultad.ExecuteScalar();
                     if (result != DBNull.Value)
                     {
                         IdFacultad = Convert.ToInt32(result) + 1;
@@ -48,6 +41,43 @@ namespace programa_mamalon_de_pagos.BACKEND
                 {
                     cmd.Parameters.AddWithValue("@IDFacultad", IdFacultad);
                     cmd.Parameters.AddWithValue("@Nombre", Nombre);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Método para Actualizar una Facultad
+        public void ActualizarFacultad()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Facultades SET Nombre = @Nombre WHERE IDFacultad = @IDFacultad;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDFacultad", IdFacultad);
+                    cmd.Parameters.AddWithValue("@Nombre", Nombre);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Método para Eliminar una Facultad
+        public void EliminarFacultad()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Facultades WHERE IDFacultad = @IDFacultad;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDFacultad", IdFacultad);
 
                     cmd.ExecuteNonQuery();
                 }
