@@ -62,5 +62,26 @@ namespace programa_mamalon_de_pagos.BACKEND
             NombreCurso = nuevoNombre;
             Facultad = nuevaFacultad;
         }
+        public void EliminarCurso(int IDCurso)
+        {
+            string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Cursos WHERE IDCurso = @IDCurso;";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IDCurso", IDCurso);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
     }
+
 }
+

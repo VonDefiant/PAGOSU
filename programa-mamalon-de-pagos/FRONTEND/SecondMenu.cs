@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using programa_mamalon_de_pagos.FRONTEND;
+using programa_mamalon_de_pagos.FRONTEND.imagenes;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
@@ -27,7 +28,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
             Periodo,
             Reportes,
             Consultas,
-            Carrera
+            Carrera,
+            borrarcurso
+
         }
 
 
@@ -70,28 +73,48 @@ namespace programa_mamalon_de_pagos.FRONTEND
         private void ButtonModificar_Click(object sender, EventArgs e)
         {
             // Botón "Modificar": Redirigir a otro formulario según el contexto
-            /*switch (contexto)
+            switch (contexto)
             {
-                case ContextoMenu.Cursos:
-                    AbrirFormulario(new FormularioCursos());
+                case ContextoMenu.borrarcurso:
+                    AbrirFormulario(new borrarcurso());
                     break;
                 case ContextoMenu.Secciones:
-                    AbrirFormulario(new FormularioSecciones());
+                    //AbrirFormulario(new FormularioSecciones());
                     break;
                 case ContextoMenu.RealizarPagos:
-                    AbrirFormulario(new FormularioRealizarPagos());
+                    // AbrirFormulario(new FormularioRealizarPagos());
                     break;
                 case ContextoMenu.Periodo:
-                    AbrirFormulario(new FormularioPeriodo());
+                    //  AbrirFormulario(new FormularioPeriodo());
                     break;
                     // Agrega más casos para otros contextos si es necesario
-            }/**/
+            }
         }
 
         private void ButtonEliminar_Click(object sender, EventArgs e)
         {
-            // Botón "Eliminar": Agrega lógica para eliminar según el contexto si es necesario
+            // Botón "Eliminar": Redirigir a otro formulario según el contexto
+            switch (contexto)
+            {
+                case ContextoMenu.Cursos:
+                    AbrirFormulario(new borrarcurso());
+                    break;
+                case ContextoMenu.Secciones:
+                    // AbrirFormulario(new FormularioSecciones());
+                    break;
+                case ContextoMenu.RealizarPagos:
+                    // AbrirFormulario(new FormularioRealizarPagos());
+                    break;
+                case ContextoMenu.Periodo:
+                    // AbrirFormulario(new FormularioPeriodo());
+                    break;
+
+                default:
+                    MessageBox.Show("Esta función no está disponible en el contexto actual.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
         }
+
 
         private void ButtonRegresar_Click(object sender, EventArgs e)
         {

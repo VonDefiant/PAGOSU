@@ -16,6 +16,7 @@ namespace programa_mamalon_de_pagos
         public Login()
         {
             InitializeComponent();
+            CONTRASEÑABOX.PasswordChar = '*';
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
