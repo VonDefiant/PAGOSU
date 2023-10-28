@@ -100,7 +100,6 @@ namespace programa_mamalon_de_pagos.FRONTEND
         private void REPORTESBT_Click(object sender, EventArgs e)
         {
             menureportes frmmenureportes = new menureportes();
-            this.Hide();
             frmmenureportes.Show();
         }
     }

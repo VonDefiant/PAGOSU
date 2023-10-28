@@ -26,6 +26,11 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void button2_Click(object sender, EventArgs e)
         {
+            {
+                reportesporalumno frmreportesporalumno = new reportesporalumno();
+                this.Hide();
+                frmreportesporalumno.Show();
+            }
         }
     }
 }
