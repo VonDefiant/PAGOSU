@@ -99,6 +99,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
             CargarFacultadesEnComboBox();
             CargarInstitucionEnComboBox();
             CargarJornadasEnComboBox();
+            CargarCarreraEnComboBox();
         }
 
         private void Cbinstitucion_SelectedIndexChanged(object sender, EventArgs e)
@@ -250,6 +251,51 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 MessageBox.Show("Error al cargar las facultades: " + ex.Message);
             }
         }
+
+        private void Cbcarrera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Cbcarrera.SelectedIndex >= 0)
+            {
+                string carreraSeleccionada = Cbcarrera.SelectedItem.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una Carrera válida.");
+            }
+        }
+
+        private void CargarCarreraEnComboBox()
+        {
+            try
+            {
+                // Conecta a la base de datos y obtiene los nombres de las facultades
+                string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
+                string selectQuery = "SELECT NombreCarrera FROM Carrera";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
+                    {
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Cbcarrera.Items.Add(reader["NombreCarrera"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las carreras: " + ex.Message);
+            }
+        }
+
+
 
     }
 }

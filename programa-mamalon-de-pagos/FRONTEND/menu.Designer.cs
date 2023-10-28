@@ -129,7 +129,7 @@
             // 
             // SECCIONESBT
             // 
-            SECCIONESBT.BackgroundImage = Properties.Resources.secciones;
+            SECCIONESBT.BackgroundImage = Properties.Resources.carrera_profesional1;
             SECCIONESBT.BackgroundImageLayout = ImageLayout.Zoom;
             SECCIONESBT.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             SECCIONESBT.ForeColor = SystemColors.ButtonHighlight;
@@ -219,9 +219,9 @@
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(261, 283);
             label2.Name = "label2";
-            label2.Size = new Size(69, 15);
+            label2.Size = new Size(67, 15);
             label2.TabIndex = 25;
-            label2.Text = "SECCIONES";
+            label2.Text = "CARRERAS";
             // 
             // label3
             // 

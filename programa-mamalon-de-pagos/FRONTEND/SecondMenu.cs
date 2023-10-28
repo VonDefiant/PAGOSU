@@ -26,7 +26,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
             RealizarPagos,
             Periodo,
             Reportes,
-            Consultas
+            Consultas,
+            Carrera
         }
 
 
@@ -98,6 +99,9 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     break;
                 case ContextoMenu.Cursos:
                     AbrirFormulario(new crearcurso());
+                    break;
+                case ContextoMenu.Carrera:
+                    AbrirFormulario(new crearcarrera());
                     break;
                     // Agrega más casos para otros contextos si es necesario
             }

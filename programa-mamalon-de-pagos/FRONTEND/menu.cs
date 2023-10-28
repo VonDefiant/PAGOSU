@@ -81,13 +81,13 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void SECCIONESBT_Click(object sender, EventArgs e)
         {
-            SecondMenu formularioSecondMenu = new SecondMenu(SecondMenu.ContextoMenu.Secciones);
+            SecondMenu formularioSecondMenu = new SecondMenu(SecondMenu.ContextoMenu.Carrera);
             formularioSecondMenu.ShowDialog();
         }
 
         private void PAGOSBT_Click(object sender, EventArgs e)
         {
-            Pagos formularioPagos = new Pagos ();
+            Pagos formularioPagos = new Pagos();
             formularioPagos.ShowDialog();
         }
 

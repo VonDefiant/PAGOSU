@@ -12,16 +12,16 @@ namespace programa_mamalon_de_pagos.BACKEND
     {
         public  int IdCarrera { get; set; }
         public string? NombreCarrera { get; set; }
-        public string? Descripcion { get; set; }
+        public string? Facultad { get; set; }
 
-        public Carrera(int idCarrera, string? nombreCarrera, string? descripcion)
+        public Carrera(int idCarrera, string? nombreCarrera, string? facultad)
         {
             IdCarrera = idCarrera;
             NombreCarrera = nombreCarrera;
-            Descripcion = descripcion;
+            Facultad = facultad;
         }
         //Método para conexion db
-        public void InsertarEstudiante()
+        public void InsertarCarrera()
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
             {
@@ -41,14 +41,14 @@ namespace programa_mamalon_de_pagos.BACKEND
                     }
                 }
 
-                string insertQuery = "INSERT INTO Carrera (IdCarrera, NombreCarrera, Descripcion) " +
-                                    "VALUES (@IdCarrera, @NombreCarrera, @Descripcion);";
+                string insertQuery = "INSERT INTO Carrera (IdCarrera, NombreCarrera, Facultad) " +
+                                    "VALUES (@IdCarrera, @NombreCarrera, @Facultad);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@IdCarrera", IdCarrera);
                     cmd.Parameters.AddWithValue("@NombreCarrera", NombreCarrera);
-                    cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
+                    cmd.Parameters.AddWithValue("@Facultad", Facultad);
                     
                     cmd.ExecuteNonQuery();
                 }
@@ -56,7 +56,7 @@ namespace programa_mamalon_de_pagos.BACKEND
         }
 
         //Metodo para actualizar la info
-        public void ActualizarEstudiante()
+        public void ActualizarCarrera()
         {
             string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
 
@@ -64,14 +64,14 @@ namespace programa_mamalon_de_pagos.BACKEND
             {
                 connection.Open();
 
-                string updateQuery = "UPDATE Carrear SET NombreCarrera = @NombreCarrera, Descripcion = @Descripcion" +
+                string updateQuery = "UPDATE Carrera SET NombreCarrera = @NombreCarrera, Facultad = @Facultad " +
                                     "WHERE IdCarrera = @IdCarrera;";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@IdCarrera", IdCarrera);
                     cmd.Parameters.AddWithValue("@NombreCarrera", NombreCarrera);
-                    cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
+                    cmd.Parameters.AddWithValue("@Facultad", Facultad);
                     
                     cmd.ExecuteNonQuery();
                 }
@@ -79,7 +79,7 @@ namespace programa_mamalon_de_pagos.BACKEND
         }
 
         //Método para eliminar
-        public void EliminarEstudiante()
+        public void EliminarCarrera()
         {
             string connectionString = "Data Source = BACKEND/EXACTUS.db; Version = 3; ";
 
