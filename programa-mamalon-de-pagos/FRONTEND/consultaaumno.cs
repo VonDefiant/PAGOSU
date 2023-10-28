@@ -74,8 +74,47 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
         }
 
-        private void buscarboton_Click(object sender, EventArgs e)
+        private void cmjornada_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+        private void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            // Obtener los datos del formulario
+            int carnet = int.Parse(CARNECONSULTA.Text);
+            string nombreCompleto = TXTNOMBRECOMPLETO.Text;
+            string carreraGrado = txtcarreta.Text;
+            string seccion = textseccion.Text;
+            string correoElectronico = txtcorreo.Text;
+            string telefono = txtelefono.Text;
+            string institucion = cminstitucion.Text;
+            string facultad = cmfacultad.Text;
+            string jornada = cmjornada.Text;
+            
+
+            // Crear una instancia de la clase Estudiante y asignar los datos
+            Estudiante estudiante = ObtenerEstudiantePorCarnet(carnet);
+            if (estudiante != null)
+            {
+                estudiante.NombreCompleto = nombreCompleto;
+                estudiante.CarreraGrado = carreraGrado;
+                estudiante.Seccion = seccion;
+                estudiante.CorreoElectronico = correoElectronico;
+                estudiante.Telefono = telefono;
+                estudiante.Institucion = institucion;
+                estudiante.Facultad = facultad;
+                estudiante.Jornada = jornada;
+
+                // Actualizar el estudiante en la base de datos
+                estudiante.ActualizarEstudiante();
+                MessageBox.Show("Estudiante actualizado correctamente.");
+            }
+            else
+            {
+                MessageBox.Show("Estudiante no encontrado.");
+            }
+
+            private void buscarboton_Click(object sender, EventArgs e)
             {
                 // Obtener el número de carnet ingresado por el usuario
                 int carnet = int.Parse(CARNECONSULTA.Text);
@@ -93,7 +132,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     txtelefono.Text = estudiante.Telefono;
                     cminstitucion.Text = estudiante.Institucion;
                     cmfacultad.Text = estudiante.Facultad;
-                    // Otros campos y asignaturas...
+                    cmjornada.Text = estudiante.Jornada;
 
                     // Habilitar el botón de "Actualizar"
                     BtnActualizar.Enabled = true;
@@ -104,77 +143,11 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     LimpiarCampos();
                 }
             }
-            private void LimpiarCampos()
-            {
-                // Limpia todos los campos del formulario
-                TXTNOMBRECOMPLETO.Text = "";
-                txtcarreta.Text = "";
-                textseccion.Text = "";
-                txtcorreo.Text = "";
-                txtelefono.Text = "";
-                cminstitucion.Text = "";
-                cmfacultad.Text = "";
-                CARNECONSULTA.Text = "";
 
-                // Deshabilitar el botón de "Actualizar"
-                BtnActualizar.Enabled = false;
-            }
+
+
 
         }
-        private Estudiante ObtenerEstudiantePorCarnet(int carnet)
-        {
-            // Aquí deberías implementar la lógica para obtener un estudiante por su carnet
-            // utilizando tu base de datos y retornar una instancia de la clase Estudiante
-            // con los datos obtenidos de la base de datos.
-            // Puedes utilizar la conexión a la base de datos y la consulta SQL para esto.
-            // Asegúrate de manejar adecuadamente la conexión y los errores.
-            // Si el estudiante no se encuentra, puedes retornar null.
 
-            // Ejemplo:
-            using (SQLiteConnection connection = new SQLiteConnection("Data Source=BACKEND/EXACTUS.db;Version=3;"))
-            {
-                connection.Open();
-
-                string selectQuery = "SELECT * FROM Estudiantes WHERE Carnet = @Carnet;";
-                using (SQLiteCommand cmd = new SQLiteCommand(selectQuery, connection))
-                {
-                    cmd.Parameters.AddWithValue("@Carnet", carnet);
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            // Crear una instancia de Estudiante y asignar los datos
-                            Estudiante estudiante = new Estudiante(reader["NombreCompleto"].ToString(), reader["CarreraGrado"].ToString(), reader["Seccion"].ToString(), reader["CorreoElectronico"].ToString(), reader["Telefono"].ToString(), reader["Institucion"].ToString(), reader["Facultad"].ToString(), reader["Jornada"].ToString());
-                            // Asignar asignaturas y otros campos...
-
-                            return estudiante;
-                        }
-                        else
-                        {
-                            return null; // Estudiante no encontrado
-                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    }
-                }
-            }
-        }
-
-        private void BtnActualizar_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

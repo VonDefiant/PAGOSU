@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(consultaaumno));
             CARNECONSULTA = new TextBox();
-            dataGridView3 = new DataGridView();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -52,7 +51,7 @@
             chbcursos = new CheckedListBox();
             BtnActualizar = new Button();
             label11 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            cmjornada = new ComboBox();
             SuspendLayout();
             // 
             // CARNECONSULTA
@@ -64,18 +63,6 @@
             CARNECONSULTA.Text = "Ingrese Carné";
             CARNECONSULTA.TextAlign = HorizontalAlignment.Center;
             CARNECONSULTA.TextChanged += CARNECONSULTA_TextChanged;
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(156, 119);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.RowTemplate.Height = 25;
-            dataGridView3.Size = new Size(59, 22);
-            dataGridView3.TabIndex = 3;
-            dataGridView3.CellContentClick += dataGridView3_CellContentClick;
             // 
             // label1
             // 
@@ -100,7 +87,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(156, 99);
+            label3.Location = new Point(170, 99);
             label3.Name = "label3";
             label3.Size = new Size(60, 15);
             label3.TabIndex = 6;
@@ -128,7 +115,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(221, 99);
+            label6.Location = new Point(245, 99);
             label6.Name = "label6";
             label6.Size = new Size(56, 15);
             label6.TabIndex = 12;
@@ -146,7 +133,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(306, 101);
+            label8.Location = new Point(310, 101);
             label8.Name = "label8";
             label8.Size = new Size(160, 15);
             label8.TabIndex = 16;
@@ -186,7 +173,7 @@
             // 
             TXTNOMBRECOMPLETO.Location = new Point(134, 30);
             TXTNOMBRECOMPLETO.Name = "TXTNOMBRECOMPLETO";
-            TXTNOMBRECOMPLETO.Size = new Size(348, 23);
+            TXTNOMBRECOMPLETO.Size = new Size(379, 23);
             TXTNOMBRECOMPLETO.TabIndex = 21;
             TXTNOMBRECOMPLETO.TextChanged += TXTNOMBRECOMPLETO_TextChanged;
             // 
@@ -208,7 +195,7 @@
             // 
             // textseccion
             // 
-            textseccion.Location = new Point(221, 119);
+            textseccion.Location = new Point(248, 119);
             textseccion.Name = "textseccion";
             textseccion.Size = new Size(56, 23);
             textseccion.TabIndex = 24;
@@ -225,9 +212,9 @@
             // 
             // cminstitucion
             // 
-            cminstitucion.Location = new Point(283, 119);
+            cminstitucion.Location = new Point(310, 119);
             cminstitucion.Name = "cminstitucion";
-            cminstitucion.Size = new Size(198, 23);
+            cminstitucion.Size = new Size(203, 23);
             cminstitucion.TabIndex = 26;
             cminstitucion.TextChanged += cminstitucion_TextChanged;
             // 
@@ -235,7 +222,7 @@
             // 
             txtcarreta.Location = new Point(153, 73);
             txtcarreta.Name = "txtcarreta";
-            txtcarreta.Size = new Size(328, 23);
+            txtcarreta.Size = new Size(360, 23);
             txtcarreta.TabIndex = 27;
             txtcarreta.TextChanged += txtcarreta_TextChanged;
             // 
@@ -268,12 +255,22 @@
             label11.TabIndex = 30;
             label11.Text = "ACTUALIZAR";
             // 
+            // cmjornada
+            // 
+            cmjornada.FormattingEnabled = true;
+            cmjornada.Location = new Point(153, 117);
+            cmjornada.Name = "cmjornada";
+            cmjornada.Size = new Size(89, 23);
+            cmjornada.TabIndex = 31;
+            cmjornada.SelectedIndexChanged += cmjornada_SelectedIndexChanged;
+            // 
             // consultaaumno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
             ClientSize = new Size(525, 500);
+            Controls.Add(cmjornada);
             Controls.Add(label11);
             Controls.Add(BtnActualizar);
             Controls.Add(chbcursos);
@@ -295,12 +292,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(dataGridView3);
             Controls.Add(CARNECONSULTA);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "consultaaumno";
             Text = "Estudiantes";
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,7 +303,6 @@
         #endregion
 
         private TextBox CARNECONSULTA;
-        private DataGridView dataGridView3;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -330,5 +324,6 @@
         private CheckedListBox chbcursos;
         private Button BtnActualizar;
         private Label label11;
+        private ComboBox cmjornada;
     }
 }
