@@ -19,6 +19,8 @@ namespace programa_mamalon_de_pagos
         public string Institucion { get; set; }
         public string Facultad { get; set; }
         public string Jornada { get; set; }
+        public List<string> Asignaturas { get; set; }
+
 
         // Constructor
         public Estudiante(string nombrecompleto, string carreragrado, string seccion, string correoElectronico, string telefono, string institucion, string facultad, string jornada)
@@ -31,7 +33,19 @@ namespace programa_mamalon_de_pagos
             Institucion = institucion;
             Facultad = facultad;
             Jornada = jornada;
+            Asignaturas = new List<string>();
         }
+        public void AsignarAsignatura(string asignatura)
+        {
+            Asignaturas.Add(asignatura);
+        }
+
+        // Método para obtener la lista de asignaturas del profesor
+        public List<string> ObtenerAsignaturas()
+        {
+            return Asignaturas;
+        }
+
 
         public void InsertarEstudiante()
         {
@@ -53,8 +67,8 @@ namespace programa_mamalon_de_pagos
                     }
                 }
 
-                string insertQuery = "INSERT INTO Estudiantes (Carnet, NombreCompleto, CarreraGrado, Seccion, CorreoElectronico, Telefono, Institucion, Facultad, Jornada) " +
-                                    "VALUES (@Carnet, @NombreCompleto, @CarreraGrado, @Seccion, @CorreoElectronico, @Telefono, @Institucion, @Facultad, @Jornada);";
+                string insertQuery = "INSERT INTO Estudiantes (Carnet, NombreCompleto, CarreraGrado, Seccion, CorreoElectronico, Telefono, Institucion, Facultad, Jornada, Asignaturas) " +
+                                    "VALUES (@Carnet, @NombreCompleto, @CarreraGrado, @Seccion, @CorreoElectronico, @Telefono, @Institucion, @Facultad, @Jornada, @Asignaturas);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
                 {
@@ -67,6 +81,7 @@ namespace programa_mamalon_de_pagos
                     cmd.Parameters.AddWithValue("@Institucion", Institucion);
                     cmd.Parameters.AddWithValue("@Facultad", Facultad);
                     cmd.Parameters.AddWithValue("@Jornada", Jornada);
+                    cmd.Parameters.AddWithValue("@Asignaturas", string.Join(",", Asignaturas));
 
                     cmd.ExecuteNonQuery();
                 }
@@ -83,7 +98,7 @@ namespace programa_mamalon_de_pagos
                 connection.Open();
 
                 string updateQuery = "UPDATE Estudiantes SET NombreCompleto = @NombreCompleto, CarreraGrado = @CarreraGrado, Seccion = @Seccion, " +
-                                    "CorreoElectronico = @CorreoElectronico, Telefono = @Telefono, Institucion = @Institucion, Facultad = @Facultad, Jornada = @Jornada " +
+                                    "CorreoElectronico = @CorreoElectronico, Telefono = @Telefono, Institucion = @Institucion, Facultad = @Facultad, Jornada = @Jornada, Asignaturas = @Asignaturas " +
                                     "WHERE Carnet = @Carnet;";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, connection))

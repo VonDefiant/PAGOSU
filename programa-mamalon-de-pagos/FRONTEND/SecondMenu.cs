@@ -101,11 +101,8 @@ namespace programa_mamalon_de_pagos.FRONTEND
                 case ContextoMenu.Cursos:
                     AbrirFormulario(new borrarcurso());
                     break;
-                case ContextoMenu.Secciones:
-                    // AbrirFormulario(new FormularioSecciones());
-                    break;
-                case ContextoMenu.RealizarPagos:
-                    // AbrirFormulario(new FormularioRealizarPagos());
+                case ContextoMenu.Docentes:
+                 AbrirFormulario(new borrardocente());
                     break;
                 case ContextoMenu.Estudiantes:
                      AbrirFormulario(new borraralumno());
