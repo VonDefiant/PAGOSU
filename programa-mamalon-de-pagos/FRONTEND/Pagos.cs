@@ -8,64 +8,122 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using programa_mamalon_de_pagos.BACKEND;
+using System.Data.SQLite;
 
 namespace programa_mamalon_de_pagos.FRONTEND
 {
-    public partial class Pagos : Form
-    {
-        public Pagos()
+        public partial class Pagos : Form
         {
-            InitializeComponent();
-            // Configura las opciones para el ComboBox de Pagos
-            PagosCB.Items.Add("Tarjeta de Débito");
-            PagosCB.Items.Add("Tarjeta de Crédito");
+            // Cadena de conexión a la base de datos SQLite
+            private string connectionString = "Data Source= BACKEND/EXACTUS.db;Version = 3;";
 
-            // Muestra la fecha actual en el Label
-            labelfecha.Text = "Fecha actual: " + DateTime.Now.ToString("dd/MM/yyyy");
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            // Validar que se haya ingresado un monto
-            if (string.IsNullOrWhiteSpace(txtMonto.Text))
+            // Constructor del formulario
+            public Pagos()
             {
-                MessageBox.Show("Por favor, ingrese el monto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                InitializeComponent();
+                // Configura las opciones para el ComboBox de Pagos
+                PagosCB.Items.Add("Tarjeta de Débito");
+                PagosCB.Items.Add("Tarjeta de Crédito");
+                PagosCB.Items.Add("Transferencia");
             }
 
-            // Validar que se haya seleccionado un tipo de pago
-            if (PagosCB.SelectedItem == null)
+            // Evento de clic en el botón "Agregar"
+            private void btnAgregar_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Por favor, seleccione un tipo de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                try
+                {
+                    // Validar que se haya ingresado un monto
+                    if (string.IsNullOrWhiteSpace(txtMonto.Text))
+                    {
+                        MessageBox.Show("Por favor, ingrese el monto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Validar que se haya seleccionado un tipo de pago
+                    if (PagosCB.SelectedItem == null)
+                    {
+                        MessageBox.Show("Por favor, seleccione un tipo de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Obtener el monto ingresado por el usuario
+                    decimal monto = decimal.Parse(txtMonto.Text);
+
+                    // Obtener el tipo de pago seleccionado por el usuario
+                    string tipoPago = PagosCB.SelectedItem.ToString();
+
+                    // Obtener el número de cuenta si se eligió "Transferencia"
+                    string numeroCuenta = null;
+                    if (tipoPago == "Transferencia" && !string.IsNullOrWhiteSpace(txtNumeroCuenta.Text))
+                    {
+                        numeroCuenta = txtNumeroCuenta.Text;
+
+                        // Obtener el carnet desde la base de datos SQLite
+                        string carnet = ObtenerCarnetDesdeSQLite(numeroCuenta);
+                        if (carnet == "Carnet no encontrado")
+                        {
+                            MessageBox.Show("Número de cuenta no asociado a ningún carnet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Puedes usar el valor de 'carnet' según tus necesidades
+                    }
+
+                    // Insertar los datos en la base de datos SQLite
+                    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                    {
+                        connection.Open();
+
+                        string insertDataQuery = "INSERT INTO Pagos (Monto, TipoPago, NumeroCuenta) VALUES (@Monto, @TipoPago, @NumeroCuenta);";
+
+                        using (SQLiteCommand command = new SQLiteCommand(insertDataQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Monto", monto);
+                            command.Parameters.AddWithValue("@TipoPago", tipoPago);
+                            command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Mostrar un mensaje de éxito
+                    MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Restablecer los controles para permitir nuevos pagos
+                    txtMonto.Clear();
+                    txtNumeroCuenta.Clear();
+                    PagosCB.SelectedIndex = -1; // Desseleccionar el ComboBox
+                }
+                catch (Exception ex)
+                {
+                    // Manejar cualquier excepción que ocurra durante el proceso
+                    MessageBox.Show("Error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            // Obtener el monto ingresado por el usuario
-            decimal monto = decimal.Parse(txtMonto.Text);
+            // Método para obtener el carnet desde la base de datos SQLite
+            private string ObtenerCarnetDesdeSQLite(string numeroCuenta)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
 
-            // Obtener el tipo de pago seleccionado por el usuario
-            string tipoPago = PagosCB.SelectedItem.ToString();
-
-            // Lógica para obtener el carnet desde la base de datos SQLite
-            // Aquí deberías escribir el código para consultar la base de datos SQLite y obtener el carnet correspondiente
-
-            // Ejemplo de código para obtener el carnet (a ser reemplazado con la lógica real)
-            // string carnet = ObtenerCarnetDesdeSQLite();
-
-            // Mostrar un mensaje con los detalles del pago
-            MessageBox.Show($"Monto: {monto}\nTipo de Pago: {tipoPago}\nCarnet: [Carnet obtenido de la base de datos]",
-                            "Detalles del Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Restablecer los controles para permitir nuevos pagos
-            txtMonto.Clear();
-            PagosCB.SelectedIndex = -1; // Desseleccionar el ComboBox
+                    string obtenerCarnetQuery = "SELECT Carnet FROM Estudiantes WHERE NumeroCuenta = @NumeroCuenta;";
+                    using (SQLiteCommand command = new SQLiteCommand(obtenerCarnetQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@NumeroCuenta", numeroCuenta);
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return result.ToString();
+                        }
+                        else
+                        {
+                            // Manejar el caso en el que el número de cuenta no está asociado a ningún carnet
+                            return "Carnet no encontrado";
+                        }
+                    }
+                }
+            }
         }
-
-        // Método para obtener el carnet desde la base de datos SQLite (a ser implementado)
-        // private string ObtenerCarnetDesdeSQLite()
-        // {
-        //     // Implementa la lógica para obtener el carnet desde la base de datos SQLite aquí
-        //     // Retorna el carnet obtenido
-        // }
-    }
 }

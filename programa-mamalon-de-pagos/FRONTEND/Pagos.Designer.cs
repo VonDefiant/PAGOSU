@@ -38,6 +38,8 @@
             label3 = new Label();
             labelfecha = new Label();
             label4 = new Label();
+            txtNumeroCuenta = new TextBox();
+            labelNumeroCuenta = new Label();
             SuspendLayout();
             // 
             // btnAgregar
@@ -78,10 +80,12 @@
             // PagosCB
             // 
             PagosCB.FormattingEnabled = true;
+            PagosCB.Items.AddRange(new object[] { "Tarjeta de crédito", "Tarjeta de dédito", "Transferencia" });
             PagosCB.Location = new Point(202, 80);
             PagosCB.Name = "PagosCB";
             PagosCB.Size = new Size(239, 28);
             PagosCB.TabIndex = 7;
+            //PagosCB.SelectedIndexChanged += PagosCB_SelectedIndexChanged;
             // 
             // CarnetCB
             // 
@@ -118,12 +122,33 @@
             label4.Size = new Size(0, 20);
             label4.TabIndex = 12;
             // 
+            // txtNumeroCuenta
+            // 
+            txtNumeroCuenta.Location = new Point(640, 81);
+            txtNumeroCuenta.Name = "txtNumeroCuenta";
+            txtNumeroCuenta.Size = new Size(125, 27);
+            txtNumeroCuenta.TabIndex = 13;
+            txtNumeroCuenta.Visible = false;
+            //txtNumeroCuenta.TextChanged += txtNumeroCuenta_TextChanged;
+            // 
+            // labelNumeroCuenta
+            // 
+            labelNumeroCuenta.AutoSize = true;
+            labelNumeroCuenta.Location = new Point(499, 84);
+            labelNumeroCuenta.Name = "labelNumeroCuenta";
+            labelNumeroCuenta.Size = new Size(135, 20);
+            labelNumeroCuenta.TabIndex = 14;
+            labelNumeroCuenta.Text = "Número de cuenta:";
+            labelNumeroCuenta.Visible = false;
+            // 
             // Pagos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(456, 296);
+            ClientSize = new Size(971, 457);
+            Controls.Add(labelNumeroCuenta);
+            Controls.Add(txtNumeroCuenta);
             Controls.Add(label4);
             Controls.Add(labelfecha);
             Controls.Add(CarnetCB);
@@ -151,5 +176,7 @@
         private Label label3;
         private Label labelfecha;
         private Label label4;
+        private TextBox txtNumeroCuenta;
+        private Label labelNumeroCuenta;
     }
 }

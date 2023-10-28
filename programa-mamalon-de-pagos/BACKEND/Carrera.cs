@@ -12,11 +12,13 @@ namespace programa_mamalon_de_pagos.BACKEND
     {
         public  int IdCarrera { get; set; }
         public string? NombreCarrera { get; set; }
+        public Facultades Facultades { get; set; }
         public string? Descripcion { get; set; }
 
-        public Carrera(int idCarrera, string? nombreCarrera, string? descripcion)
+        public Carrera(int idCarrera, Facultades facultad, string? nombreCarrera, string? descripcion)
         {
             IdCarrera = idCarrera;
+            Facultades = facultad;
             NombreCarrera = nombreCarrera;
             Descripcion = descripcion;
         }
