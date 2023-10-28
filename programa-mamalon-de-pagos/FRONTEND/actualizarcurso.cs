@@ -28,7 +28,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
             string nuevaDescripcion = txtDescripcionCurso.Text;
 
             // Llamar al método ActualizarInformacion de la instancia de la clase Curso
-            curso.ActualizarInformacion(nuevoNombre, nuevaDescripcion);
+            //curso.ActualizarInformacion(nuevoNombre, nuevaDescripcion);
 
             // Actualizar los datos en la base de datos
             try
