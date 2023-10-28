@@ -33,7 +33,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
             // Actualizar los datos en la base de datos
             try
             {
-                curso.ActualizarInformacionEnLaBaseDeDatos();
+                //curso.ActualizarInformacionEnLaBaseDeDatos();
                 MessageBox.Show("Información actualizada correctamente en la base de datos.");
             }
             catch (Exception ex)
