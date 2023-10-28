@@ -76,11 +76,11 @@ namespace programa_mamalon_de_pagos.FRONTEND
 
         private void buscarboton_Click(object sender, EventArgs e)
         {
-        
-        
+
+
         }
 
-     
+
 
         private void BtnActualizar_Click(object sender, EventArgs e)
         {

@@ -36,7 +36,6 @@
             RECIBOSBT = new Button();
             SECCIONESBT = new Button();
             CURSOSBT = new Button();
-            CONSULTASBT = new Button();
             REPORTESBT = new Button();
             PAGOSBT = new Button();
             label1 = new Label();
@@ -48,7 +47,6 @@
             label7 = new Label();
             label10 = new Label();
             label11 = new Label();
-            label12 = new Label();
             SuspendLayout();
             // 
             // insititutonbtm
@@ -160,23 +158,11 @@
             CURSOSBT.UseVisualStyleBackColor = true;
             CURSOSBT.Click += CURSOSBT_Click;
             // 
-            // CONSULTASBT
-            // 
-            CONSULTASBT.BackgroundImage = Properties.Resources.consultas;
-            CONSULTASBT.BackgroundImageLayout = ImageLayout.Zoom;
-            CONSULTASBT.Location = new Point(479, 327);
-            CONSULTASBT.Margin = new Padding(3, 2, 3, 2);
-            CONSULTASBT.Name = "CONSULTASBT";
-            CONSULTASBT.Size = new Size(144, 108);
-            CONSULTASBT.TabIndex = 23;
-            CONSULTASBT.UseVisualStyleBackColor = true;
-            CONSULTASBT.Click += CONSULTASBT_Click_1;
-            // 
             // REPORTESBT
             // 
             REPORTESBT.BackgroundImage = Properties.Resources.reportes;
             REPORTESBT.BackgroundImageLayout = ImageLayout.Zoom;
-            REPORTESBT.Location = new Point(186, 327);
+            REPORTESBT.Location = new Point(381, 328);
             REPORTESBT.Margin = new Padding(3, 2, 3, 2);
             REPORTESBT.Name = "REPORTESBT";
             REPORTESBT.Size = new Size(144, 108);
@@ -289,21 +275,11 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(221, 437);
+            label11.Location = new Point(416, 438);
             label11.Name = "label11";
             label11.Size = new Size(65, 15);
             label11.TabIndex = 34;
             label11.Text = "REPORTES";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(505, 437);
-            label12.Name = "label12";
-            label12.Size = new Size(74, 15);
-            label12.TabIndex = 35;
-            label12.Text = "CONSULTAS";
             // 
             // menu
             // 
@@ -311,7 +287,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
             ClientSize = new Size(852, 482);
-            Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label7);
@@ -321,7 +296,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(CONSULTASBT);
             Controls.Add(REPORTESBT);
             Controls.Add(PAGOSBT);
             Controls.Add(RECIBOSBT);
@@ -348,7 +322,6 @@
         private Button RECIBOSBT;
         private Button SECCIONESBT;
         private Button CURSOSBT;
-        private Button CONSULTASBT;
         private Button REPORTESBT;
         private Button RECIBOBT;
         private Button PAGOSBT;
@@ -361,6 +334,5 @@
         private Label label7;
         private Label label10;
         private Label label11;
-        private Label label12;
     }
 }

@@ -40,7 +40,7 @@ namespace programa_mamalon_de_pagos.FRONTEND
         {
             InitializeComponent();
             this.contexto = contexto;
-            this.FormClosed += SecondMenu_FormClosed; 
+            this.FormClosed += SecondMenu_FormClosed;
         }
 
         private void ButtonAgregar_Click(object sender, EventArgs e)
@@ -102,16 +102,16 @@ namespace programa_mamalon_de_pagos.FRONTEND
                     AbrirFormulario(new borrarcurso());
                     break;
                 case ContextoMenu.Docentes:
-                 AbrirFormulario(new borrardocente());
+                    AbrirFormulario(new borrardocente());
                     break;
                 case ContextoMenu.Estudiantes:
-                     AbrirFormulario(new borraralumno());
+                    AbrirFormulario(new borraralumno());
                     break;
                 case ContextoMenu.Carrera:
                     AbrirFormulario(new borrarcarrera());
                     break;
                 case ContextoMenu.Facultad:
-                   AbrirFormulario(new borrarfacultad());
+                    AbrirFormulario(new borrarfacultad());
                     break;
                 default:
                 case ContextoMenu.Institucion:
