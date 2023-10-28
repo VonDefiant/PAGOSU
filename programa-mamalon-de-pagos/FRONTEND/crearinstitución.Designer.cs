@@ -34,7 +34,9 @@
             label1 = new Label();
             savebutton = new Button();
             label2 = new Label();
+            dbginstitucion = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dbginstitucion).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -70,9 +72,9 @@
             savebutton.BackColor = Color.Wheat;
             savebutton.BackgroundImage = Properties.Resources.salvar;
             savebutton.BackgroundImageLayout = ImageLayout.Zoom;
-            savebutton.Location = new Point(189, 198);
+            savebutton.Location = new Point(207, 187);
             savebutton.Name = "savebutton";
-            savebutton.Size = new Size(94, 84);
+            savebutton.Size = new Size(73, 57);
             savebutton.TabIndex = 3;
             savebutton.UseVisualStyleBackColor = false;
             savebutton.Click += savebutton_Click;
@@ -81,18 +83,32 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(189, 302);
+            label2.Location = new Point(190, 247);
             label2.Name = "label2";
             label2.Size = new Size(104, 25);
             label2.TabIndex = 4;
             label2.Text = "GUARDAR";
+            // 
+            // dbginstitucion
+            // 
+            dbginstitucion.BackgroundColor = SystemColors.Control;
+            dbginstitucion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dbginstitucion.GridColor = SystemColors.ButtonHighlight;
+            dbginstitucion.Location = new Point(12, 289);
+            dbginstitucion.Name = "dbginstitucion";
+            dbginstitucion.RowHeadersWidth = 51;
+            dbginstitucion.RowTemplate.Height = 29;
+            dbginstitucion.Size = new Size(445, 312);
+            dbginstitucion.TabIndex = 5;
+            dbginstitucion.CellContentClick += dbginstitucion_CellContentClick;
             // 
             // crearinstitución
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Wheat;
-            ClientSize = new Size(469, 348);
+            ClientSize = new Size(469, 616);
+            Controls.Add(dbginstitucion);
             Controls.Add(label2);
             Controls.Add(savebutton);
             Controls.Add(label1);
@@ -103,6 +119,7 @@
             Text = "Creación de instituciones";
             Load += crearinstitución_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dbginstitucion).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -114,5 +131,6 @@
         private Label label1;
         private Button savebutton;
         private Label label2;
+        private DataGridView dbginstitucion;
     }
 }

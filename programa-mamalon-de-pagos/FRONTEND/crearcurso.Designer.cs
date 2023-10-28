@@ -70,6 +70,7 @@
             // 
             // dgvAgregar
             // 
+            dgvAgregar.BackgroundColor = SystemColors.Control;
             dgvAgregar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAgregar.Location = new Point(14, 244);
             dgvAgregar.Margin = new Padding(3, 4, 3, 4);
